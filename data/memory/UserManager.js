@@ -30,3 +30,5 @@ gestorDeUsuarios.create({
 });
 
 console.log(gestorDeUsuarios.read());
+
+//? agregar readOne(id) y destroy(id)
