@@ -1,0 +1,86 @@
+[
+   {
+      "id": "6c93115df8b47ecaa33ea13a",
+      "photo": "photo.png",
+      "email": "email@gmail.com",
+      "password": "prueba123",
+      "role": "admin"
+   },
+   {
+      "id": "24745402051b68f2a4334393",
+      "photo": "photo2.png",
+      "email": "newemail@gmail.com",
+      "password": "prueba678",
+      "role": "user"
+   },
+   {
+      "id": "d8aac86b237e83ec362c48c4",
+      "photo": "photo.png",
+      "email": "email@gmail.com",
+      "password": "prueba123",
+      "role": "admin"
+   },
+   {
+      "id": "aa9ea6a1b66c4995c03d66c9",
+      "photo": "photo2.png",
+      "email": "newemail@gmail.com",
+      "password": "prueba678",
+      "role": "user"
+   },
+   {
+      "id": "ad89b217c03318fd3fed8e3b",
+      "photo": "photo.png",
+      "email": "email@gmail.com",
+      "password": "prueba123",
+      "role": "admin"
+   },
+   {
+      "id": "19294ab37c0f8d6ed71b5d99",
+      "photo": "photo2.png",
+      "email": "newemail@gmail.com",
+      "password": "prueba147",
+      "role": "user"
+   },
+   {
+      "id": "983112e4abb22e382c1861b2",
+      "photo": "photo3.png",
+      "email": "email121@gmail.com",
+      "password": "prueba768",
+      "role": "user2"
+   },
+   {
+      "id": "0666b676532e86f8fa640155",
+      "photo": "photo4.png",
+      "email": "newemail2024@gmail.com",
+      "password": "prueba678",
+      "role": "user3"
+   },
+   {
+      "id": "596cceb836c8e3c3209bf999",
+      "photo": "photo.png",
+      "email": "email@gmail.com",
+      "password": "prueba123",
+      "role": "admin"
+   },
+   {
+      "id": "71f358469ace57c74e8b8777",
+      "photo": "photo2.png",
+      "email": "newemail@gmail.com",
+      "password": "prueba147",
+      "role": "user"
+   },
+   {
+      "id": "9bcb07d0f9dd3f663e3f6b92",
+      "photo": "photo3.png",
+      "email": "email121@gmail.com",
+      "password": "prueba768",
+      "role": "user2"
+   },
+   {
+      "id": "dbd76ea72061481172629db2",
+      "photo": "photo4.png",
+      "email": "newemail2024@gmail.com",
+      "password": "prueba678",
+      "role": "user3"
+   }
+]
