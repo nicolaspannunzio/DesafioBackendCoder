@@ -4,6 +4,7 @@ class UserManager {
   static #users = [];
 
   create(data) {
+    try {
     const user = {
       id: crypto.randomBytes(12).toString("hex"),
       photo: data.photo || url(""),
@@ -11,25 +12,63 @@ class UserManager {
       password: data.password,
       role: data.role,
     };
-    UserManager.#users.push(user);
-    //? console.log("UsuarioCreado");
+    if (!data.email || !data.password || !data.role) {
+      throw new Error(
+        "Usuario no encontrado. Ingrese nuevamente los datos requeridos"
+      );
+    } else {
+      let users = readFile(this.path, "utf-8");
+      users = JSON.parse(users);
+      users.push(user);
+      console.log("Usuario creado exitosamente");
+      users = JSON.stringify(users, null, 3);
+      fs.promises.writeFile(this.path, users);
+    }
+  } catch (error) {
+    console.log("Error al crear usuario");
   }
+  }
+
   read() {
-    return UserManager.#users; 
-    //agregar try catch
+    try {
+      let users = readFile(this.path, "utf-8");
+      users = JSON.parse(users);
+      return users;
+    } catch (error) {
+      console.log("Error al leer el usuario");
+      return [];
+    }
   }
+
   readOne(id) {
-    return UserManager.#users.find(each=>each.id===id);
-    //agregar try catch
+    try {
+      const user = UserManager.#users.find(each => each.id === id);
+      if (user) {
+        return user;
+      } else {
+        throw new Error('Usuario no encontrado');
+      }
+    } catch (error) {
+      console.log("error");
+      return null; 
+    }
   }
+
   destroy(id) {
-    const filtered = UserManager.#users.filter(each=>each.id!==id);
-    UserManager.#users = filtered;
-    console.log(id + "eliminado");
-    // agregar try catch y condicional de usuario no encontrado
+    try {
+      const filtered = UserManager.#users.filter(each => each.id !== id);
+      if (filtered.length < UserManager.#users.length) {
+        UserManager.#users = filtered;
+        console.log(id + " eliminado");
+      } else {
+        throw new Error('Usuario no encontrado');
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 }
-
+  
 const gestorDeUsuarios = new UserManager();
 gestorDeUsuarios.create({
   photo: "photo.png",
@@ -41,7 +80,3 @@ gestorDeUsuarios.create({
   email: "newemail@gmail.com",
   password: "prueba678",
 });
-
-console.log(gestorDeUsuarios.read());
-
-//? agregar readOne(id) y destroy(id)
