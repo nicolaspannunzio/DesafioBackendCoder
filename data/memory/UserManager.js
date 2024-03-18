@@ -1,19 +1,32 @@
+const crypto = require("cryto");
+
 class UserManager {
   static #users = [];
 
   create(data) {
     const user = {
-      id: UserManager.#users.length === 0 ? 1 : UserManager.#users[UserManager.#users.length - 1].id + 1,
-      photo: data.photo,
+      id: crypto.randomBytes(12).toString("hex"),
+      photo: data.photo || url(""),
       email: data.email,
       password: data.password,
-      role: 0,
+      role: data.role,
     };
     UserManager.#users.push(user);
     //? console.log("UsuarioCreado");
   }
   read() {
-    return UserManager.#users;
+    return UserManager.#users; 
+    //agregar try catch
+  }
+  readOne(id) {
+    return UserManager.#users.find(each=>each.id===id);
+    //agregar try catch
+  }
+  destroy(id) {
+    const filtered = UserManager.#users.filter(each=>each.id!==id);
+    UserManager.#users = filtered;
+    console.log(id + "eliminado");
+    // agregar try catch y condicional de usuario no encontrado
   }
 }
 
