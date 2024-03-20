@@ -1,5 +1,5 @@
-const fs = require("fs");
-const crypto = require("crypto");
+import fs from "fs"
+import crypto from "crypto"
 
 class ProductsManager {
   constructor() {
@@ -166,4 +166,5 @@ async function test() {
   console.log(await gestorDeProductos.readOne("e83d858a4ad0f53e582f4d37"));
 }
 
-test();
+const productsManager = new ProductsManager()
+export default productsManager

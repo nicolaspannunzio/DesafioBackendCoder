@@ -1,0 +1,18 @@
+[
+   {
+      "id": "890dbff803de876834874346",
+      "photo": "photo.png",
+      "title": "amoladora",
+      "category": "maquinas",
+      "price": "45000",
+      "stock": "999"
+   },
+   {
+      "id": "0f56a39c2bc8821ba091c85c",
+      "photo": "photo.png",
+      "title": "amoladora",
+      "category": "maquinas",
+      "price": "45000",
+      "stock": "999"
+   }
+]

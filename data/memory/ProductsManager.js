@@ -1,4 +1,4 @@
-const crypto = require("cryto");
+import crypto from "crypto"
 
 class ProductsManager {
   static #products = [];
