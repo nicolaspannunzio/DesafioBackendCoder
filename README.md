@@ -11,3 +11,4 @@ ProductsManager.js: Clase para gestionar productos.
 
 Contacto
 Para preguntas o problemas relacionados con el desarrollo, puedes contactarme a través de nicolas.a.pannunzio@email.com o lautyhoff77@gmail.com
+
