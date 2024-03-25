@@ -1,5 +1,6 @@
 import express from "express"
 import productsManager from "./data/fs/ProductsManager.fs.js"
+
 //server
 const server = express()
 const port = 8080
@@ -10,7 +11,6 @@ server.listen(port, ready)
 server.use(express.urlencoded({ extended: true}))
 
 //router
-
 server.get("/",async(requerimientos, respuesta)=>{
     try{
         return respuesta.status(200).json({
@@ -26,11 +26,82 @@ server.get("/",async(requerimientos, respuesta)=>{
     }
 })
 
-// create a product
-server.get("/api/products/:photo/:title/:category/:price/:stock",async(req,res)=>{
+//? create users
+server.get("/api/users/:photo/:email/:password/:role",
+    async (req, res) => {
+      try {
+        const { photo, email, password, role } = req.params;
+        const data = { photo, email, password, role };
+        const one = await productsManager.create(data);
+        return res.status(201).json({
+          response: one,
+          success: true,
+        });
+      } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+          response: "error",
+          success: false,
+        });
+      }
+    }
+  );
+
+//? Filter by role with users
+server.get("/api/users", async(req, res)=>{
     try {
-        const { photo, title, category, price, stock } = req.params
-        const data = { photo, title, category, price, stock}
+        const { role } = req.query
+        const all = await productsManager.read(role)
+        if (all){
+            return res.status(200).json({
+                response:all,
+                role,
+                success: true
+            })
+        } else {
+            const error = new Error("Not Found")
+            error.statusCode = 404
+            throw error
+        }
+
+        } catch (error) {
+            return res.status(error.statusCode).json({
+                response: error.message,
+                success: false
+        })
+    }
+})
+ 
+//? method readOne() with users
+server.get("/api/users/:pid", async(req, res)=>{
+    try {
+        const { pid } = req.params
+        const one = await productsManager.readOne(pid)
+        if(one != null){
+            return res.status(200).json({
+                response: one,
+                id,
+                success: true
+            })
+        } else {
+            const error = new Error("NOT FOUND")
+            error.statusCode = 404
+            throw error
+        }
+
+        } catch (error) {
+            return res.status(error.statusCode).json({
+                response: error.message,
+                success: false
+        })
+    }
+})
+
+// create a product
+server.get("/api/products/:photo/:title/:role/:price/:stock",async(req,res)=>{
+    try {
+        const { photo, title, role, price, stock } = req.params
+        const data = { photo, title, role, price, stock}
         const created = await productsManager.create(data)
         return res.status(201).json({
             response: created,
@@ -45,16 +116,15 @@ server.get("/api/products/:photo/:title/:category/:price/:stock",async(req,res)=
     }
 })
 
-
-// Filter by category
+// Filter by role
 server.get("/api/products", async(req, res)=>{
     try {
-        const { category } = req.query
-        const all = await productsManager.read(category)
+        const { role } = req.query
+        const all = await productsManager.read(role)
         if (all){
             return res.status(200).json({
                 response:all,
-                category,
+                role,
                 success: true
             })
         } else {
