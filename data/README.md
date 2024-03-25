@@ -54,3 +54,6 @@ Cuando ejecutas npm run dev, el servidor Express.js se inicia en el puerto 8080 
 
 Contacto
 Para preguntas o problemas relacionados con el desarrollo, puedes contactarme a través de nicolas.a.pannunzio@email.com o lautyhoff77@gmail.com
+
+create a product:
+localhost:8080/api/products/[product Photo]/title/category/price/stock
