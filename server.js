@@ -1,5 +1,6 @@
 import express from "express"
 import productsManager from "./data/fs/ProductsManager.fs.js"
+import userManager from "./data/fs/UsersManager.fs.js"
 
 //server
 const server = express()
@@ -32,7 +33,7 @@ server.get("/api/users/:photo/:email/:password/:role",
       try {
         const { photo, email, password, role } = req.params;
         const data = { photo, email, password, role };
-        const one = await productsManager.create(data);
+        const one = await userManager.create(data);
         return res.status(201).json({
           response: one,
           success: true,
@@ -51,7 +52,7 @@ server.get("/api/users/:photo/:email/:password/:role",
 server.get("/api/users", async(req, res)=>{
     try {
         const { role } = req.query
-        const all = await productsManager.read(role)
+        const all = await userManager.read(role)
         if (all){
             return res.status(200).json({
                 response:all,
@@ -73,10 +74,10 @@ server.get("/api/users", async(req, res)=>{
 })
  
 //? method readOne() with users
-server.get("/api/users/:pid", async(req, res)=>{
+server.get("/api/users/:id", async(req, res)=>{
     try {
-        const { pid } = req.params
-        const one = await productsManager.readOne(pid)
+        const { id } = req.params
+        const one = await userManager.readOne(id)
         if(one != null){
             return res.status(200).json({
                 response: one,
@@ -98,10 +99,10 @@ server.get("/api/users/:pid", async(req, res)=>{
 })
 
 // create a product
-server.get("/api/products/:photo/:title/:role/:price/:stock",async(req,res)=>{
+server.get("/api/products/:photo/:title/:category/:price/:stock",async(req,res)=>{
     try {
-        const { photo, title, role, price, stock } = req.params
-        const data = { photo, title, role, price, stock}
+        const { photo, title, category, price, stock } = req.params
+        const data = { photo, title, category, price, stock}
         const created = await productsManager.create(data)
         return res.status(201).json({
             response: created,
@@ -116,15 +117,16 @@ server.get("/api/products/:photo/:title/:role/:price/:stock",async(req,res)=>{
     }
 })
 
-// Filter by role
+// Filter by Category
+
 server.get("/api/products", async(req, res)=>{
     try {
-        const { role } = req.query
-        const all = await productsManager.read(role)
+        const { category } = req.query
+        const all = await productsManager.read(category)
         if (all){
             return res.status(200).json({
                 response:all,
-                role,
+                category,
                 success: true
             })
         } else {
@@ -141,10 +143,10 @@ server.get("/api/products", async(req, res)=>{
     }
 })
 
-server.get("/api/products/:pid", async(req, res)=>{
+server.get("/api/products/:id", async(req, res)=>{
     try {
-        const { pid } = req.params
-        const one = await productsManager.readOne(pid)
+        const { id } = req.params
+        const one = await productsManager.readOne(id)
         if(one != null){
             return res.status(200).json({
                 response: one,

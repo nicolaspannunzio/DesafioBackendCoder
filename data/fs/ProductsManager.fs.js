@@ -61,9 +61,11 @@ class ProductsManager {
         console.log("product error");
       }
     } else {
-
+      let products = await fs.promises.readFile(this.path, "utf-8");
+      products = JSON.parse(products);
+      return products
     }
-    
+
   }
 
   async readOne(id) {

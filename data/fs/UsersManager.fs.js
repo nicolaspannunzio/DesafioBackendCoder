@@ -1,7 +1,5 @@
 import fs from "fs";
 import crypto from "crypto";
-import UserManager from "../memory/UserManager";
-import exp from "constants";
 
 class UserManager {
   constructor() {
@@ -49,15 +47,27 @@ class UserManager {
     }
   }
 
-  async read() {
-    try {
+  async read( role ) {
+    if(role){
+      try {
+        let users = await fs.promises.readFile(this.path, "utf-8");
+        users = JSON.parse(users);
+        users = users.filter(each=>each.role===role)
+        if(users.length === 0) {
+          return null
+        } else {
+          return users;
+        }
+
+      } catch (error) {
+        console.log("users error");
+      }
+    } else {
       let users = await fs.promises.readFile(this.path, "utf-8");
       users = JSON.parse(users);
-      return users;
-    } catch (error) {
-      console.log("Error to read the user");
-      return [];
+      return users
     }
+
   }
 
   async readOne(id) {
@@ -104,13 +114,13 @@ async function test() {
     password: "prueba147",
     role: "user",
   });
-  await gestorDeUsuarios.create({
+  await userAdministrator.create({
     photo: "photo3.png",
     email: "email121@gmail.com",
     password: "prueba768",
     role: "user2",
   });
-  await gestorDeUsuarios.create({
+  await userAdministrator.create({
     photo: "photo4.png",
     email: "newemail2024@gmail.com",
     password: "prueba678",
@@ -120,7 +130,6 @@ async function test() {
   console.log(await gestorDeUsuarios.readOne("e83d858a4ad0f53e582f4d37"));
 }
 
-//test();
 
 const userManager = new UserManager();
 export default userManager;
