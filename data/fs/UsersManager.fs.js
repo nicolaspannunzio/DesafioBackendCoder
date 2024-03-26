@@ -1,9 +1,9 @@
-const fs = require("fs");
-const crypto = require("crypto");
+import fs from "fs";
+import crypto from "crypto";
 
 class UserManager {
   constructor() {
-    this.path = "./fs/files/users.json";
+    this.path = "./data/fs/files/users.json";
     this.init();
   }
 
@@ -13,12 +13,12 @@ class UserManager {
       if (!exists) {
         const stringData = JSON.stringify([], null, 3);
         fs.writeFileSync(this.path, stringData);
-        console.log("Archivo creado");
+        console.log("File created");
       } else {
-        console.log("Archivo ya existente");
+        console.log("Existing file");
       }
     } catch (error) {
-      console.log("Error al inicializar");
+      console.log("Initialization error");
     }
   }
 
@@ -33,30 +33,41 @@ class UserManager {
       };
       if (!data.email || !data.password || !data.role) {
         throw new Error(
-          "Usuario no encontrado. Ingrese nuevamente los datos requeridos"
-        );
+          "User not found. Enter the required data again");
       } else {
         let users = await fs.promises.readFile(this.path, "utf-8");
         users = JSON.parse(users);
         users.push(user);
-        console.log("Usuario creado exitosamente");
+        console.log("User created successfully");
         users = JSON.stringify(users, null, 3);
         await fs.promises.writeFile(this.path, users);
       }
     } catch (error) {
-      console.log("Error al crear usuario");
+      console.log("Error creating user");
     }
   }
 
-  async read() {
-    try {
+  async read( role ) {
+    if(role){
+      try {
+        let users = await fs.promises.readFile(this.path, "utf-8");
+        users = JSON.parse(users);
+        users = users.filter(each=>each.role===role)
+        if(users.length === 0) {
+          return null
+        } else {
+          return users;
+        }
+
+      } catch (error) {
+        console.log("users error");
+      }
+    } else {
       let users = await fs.promises.readFile(this.path, "utf-8");
       users = JSON.parse(users);
-      return users;
-    } catch (error) {
-      console.log("Error al leer el usuario");
-      return [];
+      return users
     }
+
   }
 
   async readOne(id) {
@@ -65,13 +76,13 @@ class UserManager {
       users = JSON.parse(users);
       const user = users.find((each) => each.id === id);
       if (!user) {
-        console.log("Usuario no encontrado");
+        console.log("User not found.");
         return null;
       } else {
         return user;
       }
     } catch (error) {
-      console.log("Error al leer usuario");
+      console.log("Error to read the user");
       return null;
     }
   }
@@ -82,34 +93,34 @@ class UserManager {
       users = JSON.parse(users);
       const filtered = users.filter((each) => each.id !== id);
       await fs.promises.writeFile(this.path, JSON.stringify(filtered, null, 3));
-      console.log(id + "eliminado");
+      console.log(id + " deleted");
     } catch (error) {
-      console.log("Eror al eliminar el usuario" + id);
+      console.log("Error to deleted the user" + id);
     }
   }
 }
 
 async function test() {
-  const gestorDeUsuarios = new UserManager();
-  await gestorDeUsuarios.create({
+  const userAdministrator = new UserManager();
+  await userAdministrator.create({
     photo: "photo.png",
     email: "email@gmail.com",
     password: "prueba123",
     role: "admin",
   });
-  await gestorDeUsuarios.create({
+  await userAdministrator.create({
     photo: "photo2.png",
     email: "newemail@gmail.com",
     password: "prueba147",
     role: "user",
   });
-  await gestorDeUsuarios.create({
+  await userAdministrator.create({
     photo: "photo3.png",
     email: "email121@gmail.com",
     password: "prueba768",
     role: "user2",
   });
-  await gestorDeUsuarios.create({
+  await userAdministrator.create({
     photo: "photo4.png",
     email: "newemail2024@gmail.com",
     password: "prueba678",
@@ -119,4 +130,6 @@ async function test() {
   console.log(await gestorDeUsuarios.readOne("e83d858a4ad0f53e582f4d37"));
 }
 
-test();
+
+const userManager = new UserManager();
+export default userManager;
