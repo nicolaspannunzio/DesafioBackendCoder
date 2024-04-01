@@ -4,10 +4,10 @@ import { userManager } from "../../data/fs/UserManager.fs.js";
 const usersRouter = Router();
 
 usersRouter.get("/", read());
-usersRouter.get("/:", readOne());
-usersRouter.post("/:", create);
-usersRouter.put("/", update);
-usersRouter.delete("/", destroy);
+usersRouter.get("/", readOne());
+usersRouter.post("/:uid", create);
+usersRouter.put("/:uid", update);
+usersRouter.delete("/:uid", destroy);
 
 //? create users
 server.get(
