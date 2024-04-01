@@ -1,6 +1,9 @@
 import express from "express";
 import productsManager from "./data/fs/ProductsManager.fs.js";
 import userManager from "./data/fs/UsersManager.fs.js";
+import indexRouter from "./src/router/index.router.js";
+import errorHandler from "./middlewares/errorHandler.mid.js";
+import pathHandler from "./middlewares/pathHandler.mid.js";
 
 //server
 const server = express();
@@ -10,6 +13,7 @@ server.listen(port, ready);
 
 //middlewares
 server.use(express.urlencoded({ extended: true }));
+//? server.use(express.json());
 
 //router
 server.get("/", async (requerimientos, respuesta) => {
@@ -164,10 +168,42 @@ server.get("/api/products/:id", async (req, res) => {
   }
 });
 
+//? update and destroy users
 
+const update = async (req, res) => {
+  try {
+    const { photo, email, password, role } = req.params;
+    const data = { photo, email, password, role };
+    const one = await userManager.update(data);
+    return res.json({
+      statusCode: 200,
+      response: one,
+    });
+  } catch (error) {
+    return res.json({
+      statusCode: error.statusCode || 500,
+      message: error.message || "CODER API ERROR",
+    });
+  }
+};
 
-//? Hacer correcciones
-/* endpoints
+const destroy = async (req, res) => {
+  try {
+    const { photo, email, password, role } = req.params;
+    const one = await userManager.destroy({ photo, email, password, role });
+    return res.json({
+      statusCode: 200,
+      response: one,
+    });
+  } catch (error) {
+    return res.json({
+      statusCode: error.statusCode || 500,
+      message: error.message || "CODER API ERROR",
+    });
+  }
+};
+
+//? endpoints users and products
 server.use("/", indexRouter);
 server.use(errorHandler);
-server.use(pathHandler); */
+server.use(pathHandler);
