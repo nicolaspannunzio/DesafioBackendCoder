@@ -1,7 +1,7 @@
 import express from "express";
 import productsManager from "./data/fs/ProductsManager.fs.js";
 import userManager from "./data/fs/UsersManager.fs.js";
-import indexRouter from "./src/router/index.router.js";
+import indexRouter from "./routers/index.router.js";
 import errorHandler from "./middlewares/errorHandler.mid.js";
 import pathHandler from "./middlewares/pathHandler.mid.js";
 
