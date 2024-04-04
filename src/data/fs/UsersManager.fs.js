@@ -57,14 +57,17 @@ class UserManager {
         } else {
           return users;
         }
+
       } catch (error) {
         console.log("users error");
       }
     } else {
       let users = await fs.promises.readFile(this.path, "utf-8");
       users = JSON.parse(users);
-      return users;
+
+      return users
     }
+
   }
 
   async readOne(id) {
@@ -83,6 +86,7 @@ class UserManager {
       return null;
     }
   }
+
 
   async update(id, data) {
     try {
@@ -107,13 +111,14 @@ class UserManager {
 
   async destroy(id) {
     try {
-      let users = await fs.promises.readFile(this.path, "utf-8");
-      users = JSON.parse(users);
+      let user = await fs.promises.readFile(this.path, "utf-8");
+      user = JSON.parse(user);
       const filtered = users.filter((each) => each.id !== id);
       await fs.promises.writeFile(this.path, JSON.stringify(filtered, null, 3));
-      console.log(id + " deleted");
+      console.log(id + "deleted");
     } catch (error) {
-      console.log("Error to deleted the user" + id);
+      console.log("error deleting users" + id);
+
     }
   }
 }
@@ -147,6 +152,7 @@ async function test() {
   console.log(await gestorDeUsuarios.read());
   console.log(await gestorDeUsuarios.readOne("e83d858a4ad0f53e582f4d37"));
 }
+
 
 const userManager = new UserManager();
 export default userManager;

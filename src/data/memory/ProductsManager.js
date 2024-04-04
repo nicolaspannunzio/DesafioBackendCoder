@@ -55,6 +55,28 @@ export default class ProductsManager {
     }
   }
 
+
+  update(id, data) {
+    try{
+      let all = this.read()
+      let one = all.find((each) => each.id === id)
+      if (one) {
+        for (let prop in data){
+          one[prop] = data[prop]
+        }
+        all = JSON.stringify(all, null, 2)
+        fs.promises.writeFile(this.path, all)
+        return one;
+      } else {
+        const error = new Error("Not Found")
+        error.statusCode= 404
+        throw error
+      }
+      } catch (error){
+      throw error
+    }
+  }
+
   destroy(id) {
     try {
       const filtered = ProductsManager.#products.filter(each => each.id !== id);

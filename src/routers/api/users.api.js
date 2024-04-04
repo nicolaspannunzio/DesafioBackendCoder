@@ -3,6 +3,7 @@ import  userManager  from "../../data/fs/UsersManager.fs.js";
 
 const usersRouter = Router();
 
+
 usersRouter.get("/", read);
 usersRouter.get("/:id", readOne);
 usersRouter.post("/:uid", create);
@@ -25,8 +26,13 @@ async function create (req, res, next) {
     }
   }
 
+
 //? Filter by role with users
 async function read (req, res, next) {
+
+);
+
+
   try {
     const { role } = req.query;
     const all = await userManager.read(role);
@@ -44,10 +50,14 @@ async function read (req, res, next) {
   } catch (error) {
     return next(error);
   }
+
 };
 
 //? method readOne() with users
 async function readOne(req, res, next) {
+
+});
+
   try {
     const { id } = req.params;
     const one = await userManager.readOne(id);
@@ -65,13 +75,15 @@ async function readOne(req, res, next) {
   } catch (error) {
     return next(error);
   }
-};
+
+
 
 //? update and destroy users
 
 async function update(req, res, next) {
   try {
     const { photo, email, password, role } = req.body;
+
     const data = { photo, email, password, role };
     const one = await userManager.update(data);
     return res.json({
@@ -83,7 +95,10 @@ async function update(req, res, next) {
   }
 }
 
+
 async function destroy(req, res, next) {
+
+
   try {
     const { id } = req.params;
     const one = await userManager.destroy({ id });
@@ -95,5 +110,7 @@ async function destroy(req, res, next) {
     return next(error);
   }
 }
+
+
 
 export default usersRouter;

@@ -45,26 +45,19 @@ class ProductsManager {
     }
   }
 
-  async read( cat ) {
-    if(cat){
+
+
+
+  async read(){
       try {
         let products = await fs.promises.readFile(this.path, "utf-8");
         products = JSON.parse(products);
-        products = products.filter(each=>each.category===cat)
-        if(products.length === 0) {
-          return null
-        } else {
-          return products;
-        }
+        return products
+
 
       } catch (error) {
         console.log("product error");
       }
-    } else {
-      let products = await fs.promises.readFile(this.path, "utf-8");
-      products = JSON.parse(products);
-      return products
-    }
 
   }
 
@@ -87,7 +80,9 @@ class ProductsManager {
 
   async update(id, data) {
     try{
+
       let all = await this.read()
+      let all = await this.read(id)
       let one = all.find((each) => each.id === id)
       if (one) {
         for (let prop in data){
