@@ -3,7 +3,7 @@ import crypto from "crypto";
 
 class UserManager {
   constructor() {
-    this.path = "./data/fs/files/users.json";
+    this.path = "./src/data/fs/files/users.json";
     this.init();
   }
 
@@ -89,13 +89,13 @@ class UserManager {
 
   async destroy(id) {
     try {
-      let users = await fs.promises.readFile(this.path, "utf-8");
-      users = JSON.parse(users);
+      let user = await fs.promises.readFile(this.path, "utf-8");
+      user = JSON.parse(user);
       const filtered = users.filter((each) => each.id !== id);
       await fs.promises.writeFile(this.path, JSON.stringify(filtered, null, 3));
-      console.log(id + " deleted");
+      console.log(id + "deleted");
     } catch (error) {
-      console.log("Error to deleted the user" + id);
+      console.log("error deleting users" + id);
     }
   }
 }

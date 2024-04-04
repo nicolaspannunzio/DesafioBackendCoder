@@ -3,7 +3,7 @@ import crypto from "crypto"
 
 class ProductsManager {
   constructor() {
-    this.path = "./data/fs/files/products.json";
+    this.path = "./src/data/fs/files/products.json";
     this.init();
   }
   init() {
@@ -45,27 +45,15 @@ class ProductsManager {
     }
   }
 
-  async read( cat ) {
-    if(cat){
+  async read(){
       try {
         let products = await fs.promises.readFile(this.path, "utf-8");
         products = JSON.parse(products);
-        products = products.filter(each=>each.category===cat)
-        if(products.length === 0) {
-          return null
-        } else {
-          return products;
-        }
+        return products
 
       } catch (error) {
         console.log("product error");
       }
-    } else {
-      let products = await fs.promises.readFile(this.path, "utf-8");
-      products = JSON.parse(products);
-      return products
-    }
-
   }
 
   async readOne(id) {
@@ -81,7 +69,28 @@ class ProductsManager {
       }
     } catch (error) {
       console.log("product error");
-      return null;
+      return error;
+    }
+  }
+
+  async update(id, data) {
+    try{
+      let all = await this.read(id)
+      let one = all.find((each) => each.id === id)
+      if (one) {
+        for (let prop in data){
+          one[prop] = data[prop]
+        }
+        all = JSON.stringify(all, null, 2)
+        await fs.promises.writeFile(this.path, all)
+        return one;
+      } else {
+        const error = new Error("Not Found")
+        error.statusCode= 404
+        throw error
+      }
+      } catch (error){
+      throw error
     }
   }
 
