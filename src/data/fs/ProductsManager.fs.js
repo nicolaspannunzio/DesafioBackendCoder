@@ -82,7 +82,6 @@ class ProductsManager {
     try{
 
       let all = await this.read()
-      let all = await this.read(id)
       let one = all.find((each) => each.id === id)
       if (one) {
         for (let prop in data){

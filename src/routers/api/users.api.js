@@ -29,10 +29,6 @@ async function create (req, res, next) {
 
 //? Filter by role with users
 async function read (req, res, next) {
-
-);
-
-
   try {
     const { role } = req.query;
     const all = await userManager.read(role);
@@ -56,8 +52,6 @@ async function read (req, res, next) {
 //? method readOne() with users
 async function readOne(req, res, next) {
 
-});
-
   try {
     const { id } = req.params;
     const one = await userManager.readOne(id);
@@ -75,7 +69,7 @@ async function readOne(req, res, next) {
   } catch (error) {
     return next(error);
   }
-
+}
 
 
 //? update and destroy users
