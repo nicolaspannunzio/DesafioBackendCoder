@@ -1,242 +1,242 @@
 [
-   {
-      "id": "8a511ffa4e43b1627cbf4a3e",
-      "photo": "dest.png",
-      "title": "destornillador",
-      "category": "herramientas",
-      "price": 1600,
-      "stock": 9999
-   },
-   {
-      "id": "e9a83fd107c37782d21a54c8",
-      "photo": "latex-prof.png",
-      "title": "latex prof 10lt",
-      "category": "pinturas",
-      "price": 55000,
-      "stock": 9999
-   },
-   {
-      "id": "0d73d59b1ed61228bf772434",
-      "photo": "sint-rojo-1.png",
-      "title": "sintetico rojo 1lt",
-      "category": "pinturas",
-      "price": 11200,
-      "stock": 9999
-   },
-   {
-      "id": "8356f8c71a8dcc96c32d7c86",
-      "photo": "sierra.png",
-      "title": "Sierra Circular",
-      "category": "maquinas",
-      "price": 89000,
-      "stock": 9999
-   },
-   {
-      "id": "b5f794890eec22a75d5821b1",
-      "photo": "Amol115.png",
-      "title": "Amoladora 115",
-      "category": "maquinas",
-      "price": 45000,
-      "stock": 9999
-   },
-   {
-      "id": "3e891c0a5e9b111e15f65823",
-      "photo": "Amol180.png",
-      "title": "Amoladora 180",
-      "category": "maquinas",
-      "price": 190000,
-      "stock": 9999
-   },
-   {
-      "id": "14912b343020dc7279b414ff",
-      "photo": "Espat4.png",
-      "title": "Espatula 4'",
-      "category": "herramientas",
-      "price": 3400,
-      "stock": 9999
-   },
-   {
-      "id": "1d1093365ee8a773b88a827b",
-      "photo": "cloropol.png",
-      "title": "Cloro en polvo 1kg",
-      "category": "piletas",
-      "price": 9500,
-      "stock": 9999
-   },
-   {
-      "id": "e65a98b33162dbf9374f5e6c",
-      "photo": "Cloroliq.png",
-      "title": "Cloro liquido 10lt",
-      "category": "piletas",
-      "price": 6000,
-      "stock": 9999
-   },
-   {
-      "id": "c434510cb0e07686a5759ffe",
-      "photo": "sacah.png",
-      "title": "Sacahojas piletas",
-      "category": "Piletas",
-      "price": 3000,
-      "stock": 9999
-   },
-   {
-      "id": "4e7e854ae567fa156bbcc11e",
-      "photo": "dest.png",
-      "title": "destornillador",
-      "category": "Herramientas",
-      "price": 1600,
-      "stock": 9999
-   },
-   {
-      "id": "dec72df4768d2e13933a2ba4",
-      "photo": "latex-prof.png",
-      "title": "latex prof 10lt",
-      "category": "pinturas",
-      "price": 55000,
-      "stock": 9999
-   },
-   {
-      "id": "96dd273d37065bfc35972fac",
-      "photo": "sint-rojo-1.png",
-      "title": "sintetico rojo 1lt",
-      "category": "pinturas",
-      "price": 11200,
-      "stock": 9999
-   },
-   {
-      "id": "f063f5c386d01e54d68d58dd",
-      "photo": "sierra.png",
-      "title": "Sierra Circular",
-      "category": "Maquinas",
-      "price": 89000,
-      "stock": 9999
-   },
-   {
-      "id": "a5dad247651a195add362355",
-      "photo": "Amol115.png",
-      "title": "Amoladora 115",
-      "category": "Maquinas",
-      "price": 45000,
-      "stock": 9999
-   },
-   {
-      "id": "4e90f42d5bdceb43bda0511f",
-      "photo": "Amol180.png",
-      "title": "Amoladora 180",
-      "category": "Maquinas",
-      "price": 190000,
-      "stock": 9999
-   },
-   {
-      "id": "aface3c464a7d10c9517b18e",
-      "photo": "Espat4.png",
-      "title": "Espatula 4'",
-      "category": "Herramientas",
-      "price": 3400,
-      "stock": 9999
-   },
-   {
-      "id": "6bb67f06aa72d0e3225073ca",
-      "photo": "cloropol.png",
-      "title": "Cloro en polvo 1kg",
-      "category": "Piletas",
-      "price": 9500,
-      "stock": 9999
-   },
-   {
-      "id": "c137f65d667e4bd6a4b27de7",
-      "photo": "Cloroliq.png",
-      "title": "Cloro liquido 10lt",
-      "category": "Piletas",
-      "price": 6000,
-      "stock": 9999
-   },
-   {
-      "id": "4b4f4a3e8079593d39d0a6af",
-      "photo": "sacah.png",
-      "title": "Sacahojas Piletas",
-      "category": "Piletas",
-      "price": 3000,
-      "stock": 9999
-   },
-   {
-      "id": "0f3cbacff50edec145db6371",
-      "photo": "dest1.png",
-      "title": "destornillador 100",
-      "category": "Herramientas",
-      "price": 1600,
-      "stock": 9999
-   },
-   {
-      "id": "0f5d8cf525ec3809e4c3785f",
-      "photo": "latex-prof20.png",
-      "title": "latex prof 20lt",
-      "category": "pinturas",
-      "price": 55000,
-      "stock": 9999
-   },
-   {
-      "id": "f25578317652bf99e591dc4e",
-      "photo": "sint-rojo-4.png",
-      "title": "sintetico rojo 4lt",
-      "category": "pinturas",
-      "price": 11200,
-      "stock": 9999
-   },
-   {
-      "id": "980562813df756dac9c82608",
-      "photo": "sierra2.png",
-      "title": "Sierra Circular lusqtoff",
-      "category": "Maquinas",
-      "price": 89000,
-      "stock": 9999
-   },
-   {
-      "id": "90058cb3af1e0b8e4e8406a5",
-      "photo": "Amol115lusq.png",
-      "title": "Amoladora 115 lusqtoff",
-      "category": "Maquinas",
-      "price": 45000,
-      "stock": 9999
-   },
-   {
-      "id": "610dc3cc398bd9926fa0d19b",
-      "photo": "Amol180lusq.png",
-      "title": "Amoladora 180 lusqtoff",
-      "category": "Maquinas",
-      "price": 190000,
-      "stock": 9999
-   },
-   {
-      "id": "2e381bbde1cb8ed89340e9d1",
-      "photo": "Espat5.png",
-      "title": "Espatula 5'",
-      "category": "Herramientas",
-      "price": 3400,
-      "stock": 9999
-   },
-   {
-      "id": "b3e47524786eefd0fdb5298f",
-      "photo": "cloroliq1.png",
-      "title": "Cloro liquido x1lt",
-      "category": "Piletas",
-      "price": 9500,
-      "stock": 9999
-   },
-   {
-      "id": "09a1b8903ac3a1ebb4d8a32c",
-      "photo": "Cloroliq20.png",
-      "title": "Cloro liquido 20lt",
-      "category": "Piletas",
-      "price": 6000,
-      "stock": 9999
-   },
-   {
-      "id": "fcd0f0fe1645a1b9b896551d",
-      "photo": "sacah32.png",
-      "title": "Sacahojas Piletas 32",
-      "category": "Piletas",
-      "price": 3000,
-      "stock": 9999
-   }
+  {
+    "id": "8a511ffa4e43b1627cbf4a3e",
+    "photo": "dest.png",
+    "title": "destornillador",
+    "category": "herramientas",
+    "price": 1600,
+    "stock": 9999
+  },
+  {
+    "id": "e9a83fd107c37782d21a54c8",
+    "photo": "latex-prof.png",
+    "title": "latex prof 10lt",
+    "category": "pinturas",
+    "price": 55000,
+    "stock": 9999
+  },
+  {
+    "id": "0d73d59b1ed61228bf772434",
+    "photo": "sint-rojo-1.png",
+    "title": "sintetico rojo 1lt",
+    "category": "pinturas",
+    "price": 11200,
+    "stock": 9999
+  },
+  {
+    "id": "8356f8c71a8dcc96c32d7c86",
+    "photo": "sierra.png",
+    "title": "Sierra Circular",
+    "category": "maquinas",
+    "price": 89000,
+    "stock": 9999
+  },
+  {
+    "id": "b5f794890eec22a75d5821b1",
+    "photo": "Amol115.png",
+    "title": "Amoladora 115",
+    "category": "maquinas",
+    "price": 45000,
+    "stock": 9999
+  },
+  {
+    "id": "3e891c0a5e9b111e15f65823",
+    "photo": "Amol180.png",
+    "title": "Amoladora 180",
+    "category": "maquinas",
+    "price": 190000,
+    "stock": 9999
+  },
+  {
+    "id": "14912b343020dc7279b414ff",
+    "photo": "Espat4.png",
+    "title": "Espatula 4'",
+    "category": "herramientas",
+    "price": 3400,
+    "stock": 9999
+  },
+  {
+    "id": "1d1093365ee8a773b88a827b",
+    "photo": "cloropol.png",
+    "title": "Cloro en polvo 1kg",
+    "category": "piletas",
+    "price": 9500,
+    "stock": 9999
+  },
+  {
+    "id": "e65a98b33162dbf9374f5e6c",
+    "photo": "Cloroliq.png",
+    "title": "Cloro liquido 10lt",
+    "category": "piletas",
+    "price": 6000,
+    "stock": 9999
+  },
+  {
+    "id": "c434510cb0e07686a5759ffe",
+    "photo": "sacah.png",
+    "title": "Sacahojas piletas",
+    "category": "Piletas",
+    "price": 3000,
+    "stock": 9999
+  },
+  {
+    "id": "4e7e854ae567fa156bbcc11e",
+    "photo": "dest.png",
+    "title": "destornillador",
+    "category": "Herramientas",
+    "price": 1600,
+    "stock": 9999
+  },
+  {
+    "id": "dec72df4768d2e13933a2ba4",
+    "photo": "latex-prof.png",
+    "title": "latex prof 10lt",
+    "category": "pinturas",
+    "price": 55000,
+    "stock": 9999
+  },
+  {
+    "id": "96dd273d37065bfc35972fac",
+    "photo": "sint-rojo-1.png",
+    "title": "sintetico rojo 1lt",
+    "category": "pinturas",
+    "price": 11200,
+    "stock": 9999
+  },
+  {
+    "id": "f063f5c386d01e54d68d58dd",
+    "photo": "sierra.png",
+    "title": "Sierra Circular",
+    "category": "Maquinas",
+    "price": 89000,
+    "stock": 9999
+  },
+  {
+    "id": "a5dad247651a195add362355",
+    "photo": "Amol115.png",
+    "title": "Amoladora 115",
+    "category": "Maquinas",
+    "price": 45000,
+    "stock": 9999
+  },
+  {
+    "id": "4e90f42d5bdceb43bda0511f",
+    "photo": "Amol180.png",
+    "title": "Amoladora 180",
+    "category": "Maquinas",
+    "price": 190000,
+    "stock": 9999
+  },
+  {
+    "id": "aface3c464a7d10c9517b18e",
+    "photo": "Espat4.png",
+    "title": "Espatula 4'",
+    "category": "Herramientas",
+    "price": 3400,
+    "stock": 9999
+  },
+  {
+    "id": "6bb67f06aa72d0e3225073ca",
+    "photo": "cloropol.png",
+    "title": "Cloro en polvo 1kg",
+    "category": "Piletas",
+    "price": 9500,
+    "stock": 9999
+  },
+  {
+    "id": "c137f65d667e4bd6a4b27de7",
+    "photo": "Cloroliq.png",
+    "title": "Cloro liquido 10lt",
+    "category": "Piletas",
+    "price": 6000,
+    "stock": 9999
+  },
+  {
+    "id": "4b4f4a3e8079593d39d0a6af",
+    "photo": "sacah.png",
+    "title": "Sacahojas Piletas",
+    "category": "Piletas",
+    "price": 3000,
+    "stock": 9999
+  },
+  {
+    "id": "0f3cbacff50edec145db6371",
+    "photo": "dest1.png",
+    "title": "destornillador 100",
+    "category": "Herramientas",
+    "price": 1600,
+    "stock": 9999
+  },
+  {
+    "id": "0f5d8cf525ec3809e4c3785f",
+    "photo": "latex-prof20.png",
+    "title": "latex prof 20lt",
+    "category": "pinturas",
+    "price": 55000,
+    "stock": 9999
+  },
+  {
+    "id": "f25578317652bf99e591dc4e",
+    "photo": "sint-rojo-4.png",
+    "title": "sintetico rojo 4lt",
+    "category": "pinturas",
+    "price": 11200,
+    "stock": 9999
+  },
+  {
+    "id": "980562813df756dac9c82608",
+    "photo": "sierra2.png",
+    "title": "Sierra Circular lusqtoff",
+    "category": "Maquinas",
+    "price": 89000,
+    "stock": 9999
+  },
+  {
+    "id": "90058cb3af1e0b8e4e8406a5",
+    "photo": "Amol115lusq.png",
+    "title": "Amoladora 115 lusqtoff",
+    "category": "Maquinas",
+    "price": 45000,
+    "stock": 9999
+  },
+  {
+    "id": "610dc3cc398bd9926fa0d19b",
+    "photo": "Amol180lusq.png",
+    "title": "Amoladora 180 lusqtoff",
+    "category": "Maquinas",
+    "price": 190000,
+    "stock": 9999
+  },
+  {
+    "id": "2e381bbde1cb8ed89340e9d1",
+    "photo": "Espat5.png",
+    "title": "Espatula 5'",
+    "category": "Herramientas",
+    "price": 3400,
+    "stock": 9999
+  },
+  {
+    "id": "b3e47524786eefd0fdb5298f",
+    "photo": "cloroliq1.png",
+    "title": "Cloro liquido x1lt",
+    "category": "Piletas",
+    "price": 9500,
+    "stock": 9999
+  },
+  {
+    "id": "09a1b8903ac3a1ebb4d8a32c",
+    "photo": "Cloroliq20.png",
+    "title": "Cloro liquido 20lt",
+    "category": "Piletas",
+    "price": 6000,
+    "stock": 9999
+  },
+  {
+    "id": "fcd0f0fe1645a1b9b896551d",
+    "photo": "sacah32.png",
+    "title": "Sacahojas Piletas 32",
+    "category": "Piletas",
+    "price": 3000,
+    "stock": 9999
+  }
 ]

@@ -6,7 +6,7 @@ const usersRouter = Router();
 
 
 usersRouter.put("/", update);
-usersRouter.delete("/", destroy);
+usersRouter.delete("/:id", destroy);
 
 //? create users
 usersRouter.get(
@@ -85,17 +85,19 @@ async function update(req, res, next) {
   }
 }
 
-async function destroy(req, res, next) {
+async function destroy(req, res) {
   try {
-    const { photo, email, password, role } = req.params;
-    const one = await userManager.destroy({ photo, email, password, role });
+    const { id } = req.params;
+    const one = await userManager.destroy({ id });
     return res.json({
       statusCode: 200,
       response: one,
     });
   } catch (error) {
-    return next(error);
-  }
-}
+    return res.json({
+      statusCode: error.statusCode || 500,
+      message: error.message || "Coder api error",
+    })
+}}
 
 export default usersRouter;
