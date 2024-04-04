@@ -32,8 +32,7 @@ class UserManager {
         role: data.role,
       };
       if (!data.email || !data.password || !data.role) {
-        throw new Error(
-          "User not found. Enter the required data again");
+        throw new Error("User not found. Enter the required data again");
       } else {
         let users = await fs.promises.readFile(this.path, "utf-8");
         users = JSON.parse(users);
@@ -47,27 +46,25 @@ class UserManager {
     }
   }
 
-  async read( role ) {
-    if(role){
+  async read(role) {
+    if (role) {
       try {
         let users = await fs.promises.readFile(this.path, "utf-8");
         users = JSON.parse(users);
-        users = users.filter(each=>each.role===role)
-        if(users.length === 0) {
-          return null
+        users = users.filter((each) => each.role === role);
+        if (users.length === 0) {
+          return null;
         } else {
           return users;
         }
-
       } catch (error) {
         console.log("users error");
       }
     } else {
       let users = await fs.promises.readFile(this.path, "utf-8");
       users = JSON.parse(users);
-      return users
+      return users;
     }
-
   }
 
   async readOne(id) {
@@ -84,6 +81,27 @@ class UserManager {
     } catch (error) {
       console.log("Error to read the user");
       return null;
+    }
+  }
+
+  async update(id, data) {
+    try {
+      let all = await this.read();
+      let one = all.find((each) => each.id === id);
+      if (one) {
+        for (let prop in data) {
+          one[prop] = data[prop];
+        }
+        all = JSON.stringify(all, null, 2);
+        await fs.promises.writeFile(this.path, all);
+        return one;
+      } else {
+        const error = new Error("Not Found");
+        error.statusCode = 404;
+        throw error;
+      }
+    } catch (error) {
+      throw error;
     }
   }
 
@@ -129,7 +147,6 @@ async function test() {
   console.log(await gestorDeUsuarios.read());
   console.log(await gestorDeUsuarios.readOne("e83d858a4ad0f53e582f4d37"));
 }
-
 
 const userManager = new UserManager();
 export default userManager;
