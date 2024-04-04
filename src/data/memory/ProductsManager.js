@@ -55,6 +55,7 @@ export default class ProductsManager {
     }
   }
 
+
   update(id, data) {
     try{
       let all = this.read()

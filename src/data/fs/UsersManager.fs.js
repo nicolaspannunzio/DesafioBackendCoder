@@ -32,8 +32,7 @@ class UserManager {
         role: data.role,
       };
       if (!data.email || !data.password || !data.role) {
-        throw new Error(
-          "User not found. Enter the required data again");
+        throw new Error("User not found. Enter the required data again");
       } else {
         let users = await fs.promises.readFile(this.path, "utf-8");
         users = JSON.parse(users);
@@ -47,14 +46,14 @@ class UserManager {
     }
   }
 
-  async read( role ) {
-    if(role){
+  async read(role) {
+    if (role) {
       try {
         let users = await fs.promises.readFile(this.path, "utf-8");
         users = JSON.parse(users);
-        users = users.filter(each=>each.role===role)
-        if(users.length === 0) {
-          return null
+        users = users.filter((each) => each.role === role);
+        if (users.length === 0) {
+          return null;
         } else {
           return users;
         }
@@ -65,6 +64,7 @@ class UserManager {
     } else {
       let users = await fs.promises.readFile(this.path, "utf-8");
       users = JSON.parse(users);
+
       return users
     }
 
@@ -87,6 +87,28 @@ class UserManager {
     }
   }
 
+
+  async update(id, data) {
+    try {
+      let all = await this.read();
+      let one = all.find((each) => each.id === id);
+      if (one) {
+        for (let prop in data) {
+          one[prop] = data[prop];
+        }
+        all = JSON.stringify(all, null, 2);
+        await fs.promises.writeFile(this.path, all);
+        return one;
+      } else {
+        const error = new Error("Not Found");
+        error.statusCode = 404;
+        throw error;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async destroy(id) {
     try {
       let user = await fs.promises.readFile(this.path, "utf-8");
@@ -96,6 +118,7 @@ class UserManager {
       console.log(id + "deleted");
     } catch (error) {
       console.log("error deleting users" + id);
+
     }
   }
 }

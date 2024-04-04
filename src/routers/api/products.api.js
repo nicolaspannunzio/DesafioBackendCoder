@@ -90,8 +90,10 @@ async function read(req, res) {
   
   async function destroy(req, res) {
     try {
-      const { id } = req.params;
-      const one = await productsManager.destroy({ id });
+
+      const { photo, title, category, price, stock } = req.params;
+      const one = await productsManager.destroy({ photo, title, category, price, stock });
+
       return res.json({
         statusCode: 200,
         response: one,
