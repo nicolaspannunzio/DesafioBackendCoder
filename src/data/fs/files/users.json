@@ -1,0 +1,31 @@
+[
+    {
+       "id": "965f09604ce0a9aaed939762",
+       "photo": "photo.png",
+       "email": "email@gmail.com",
+       "password": "prueba123",
+       "role": "admin"
+    },
+    {
+       "id": "98f0df5e881ca41611087931",
+       "photo": "photo2.png",
+       "email": "newemail@gmail.com",
+       "password": "prueba147",
+       "role": "user"
+    },
+    {
+       "id": "4b5c1a0828bdcb37bb6dfb1c",
+       "photo": "photo3.png",
+       "email": "email121@gmail.com",
+       "password": "prueba768",
+       "role": "user"
+    },
+    {
+       "id": "a1621cf0c03e1d3101fb7941",
+       "photo": "photo4.png",
+       "email": "newemail2024@gmail.com",
+       "password": "prueba678",
+       "role": "user"
+    }
+ ]
+
