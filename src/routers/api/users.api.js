@@ -1,12 +1,14 @@
 import { Router } from "express";
 import  userManager  from "../../data/fs/UsersManager.fs.js";
+import isText from "../../middlewares/isText.min.js";
+import uploader from "../../middlewares/multer.mid.js";
+import isPhoto from "../../middlewares/isPhoto.js";
 
 const usersRouter = Router();
 
-
 usersRouter.get("/", read);
 usersRouter.get("/:id", readOne);
-usersRouter.post("/:uid", create);
+usersRouter.post("/", uploader.single("photo"), isPhoto, create);
 usersRouter.put("/:id", update);
 usersRouter.delete("/:id", destroy);
 
