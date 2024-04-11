@@ -1,6 +1,7 @@
 {
   "name": "desafiobackendcoder",
   "version": "1.0.0",
+  "description": "Gestor de Usuarios y Productos. Este repositorio contiene un gestor de usuarios y productos desarrollado en JavaScript. Las clases UserManager y ProductsManager permiten crear y gestionar usuarios y productos respectivamente.",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -14,10 +15,10 @@
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "socket.io": "^4.7.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
-  },
-  "description": "Gestor de Usuarios y Productos\r Este repositorio contiene un gestor de usuarios y productos desarrollado en JavaScript. Las clases UserManager y ProductsManager permiten crear y gestionar usuarios y productos respectivamente."
+  }
 }

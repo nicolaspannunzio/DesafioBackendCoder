@@ -1,22 +1,42 @@
 import express from "express";
+import { createServer } from "http";
+import { Server } from "socket.io";
 import morgan from "morgan";
 import { engine } from "express-handlebars";
-import productsManager from "./src/data/fs/ProductsManager.fs.js";
-import userManager from "./src/data/fs/UsersManager.fs.js";
 import indexRouter from "./src/routers/index.router.js";
+import socketCb from "./src/routers/index.socket.js";
 import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
+import path from "path";
+import { upload } from "./src/middlewares/uploader.js";
 
 //server
 const server = express();
 const port = 8080;
 const ready = () => console.log("server ready on port " + port);
-server.listen(port, ready);
+const nodeServer = createServer(server);
+//server.listen(port, ready);
+nodeServer.listen(port, ready);
 
+//server TCP
+const socketServer = new Server (nodeServer);
+socketServer.on("connection", socketCb)
+
+//handlebars
 server.engine("hanlenbars", engine());
 server.set("view engine", "handlebars");
 server.set("views", __dirname + "/src/views");
+
+app.use(
+  "/css/bootstrap",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
+);
+
+app.use(
+  "/js/bootstrap",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+);
 
 //middlewares
 server.use(express.urlencoded({ extended: true }));
@@ -38,6 +58,11 @@ server.get("/", async (requerimientos, respuesta) => {
       success: false,
     });
   }
+});
+
+//image & form
+server.post("/upload", upload.single("photo"), (req, res) => {
+  res.send(req.file.filename);
 });
 
 //? endpoints users and products
