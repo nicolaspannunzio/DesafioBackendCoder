@@ -9,7 +9,7 @@ import errorHandler from "./src/middlewares/errorHandler.mid.js";
 import pathHandler from "./src/middlewares/pathHandler.mid.js";
 import __dirname from "./utils.js";
 import path from "path";
-import { upload } from "./src/middlewares/uploader.js";
+import multer from "./src/middlewares/multer.mid.js";
 
 //server
 const server = express();
@@ -20,20 +20,20 @@ const nodeServer = createServer(server);
 nodeServer.listen(port, ready);
 
 //server TCP
-const socketServer = new Server (nodeServer);
-socketServer.on("connection", socketCb)
+const socketServer = new Server(nodeServer);
+socketServer.on("connection", socketCb);
 
 //handlebars
 server.engine("hanlenbars", engine());
 server.set("view engine", "handlebars");
 server.set("views", __dirname + "/src/views");
 
-app.use(
+server.use(
   "/css/bootstrap",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
 );
 
-app.use(
+server.use(
   "/js/bootstrap",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
 );
@@ -61,9 +61,9 @@ server.get("/", async (requerimientos, respuesta) => {
 });
 
 //image & form
-server.post("/upload", upload.single("photo"), (req, res) => {
-  res.send(req.file.filename);
-});
+ server.post("/multer.mid", multer.single("photo"), (req, res) => {
+   res.send(req.file.filename);
+ });
 
 //? endpoints users and products
 server.use("/", indexRouter);

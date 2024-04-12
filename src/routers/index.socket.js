@@ -1,4 +1,4 @@
-import userManager from "../data/fs/UsersManager.fs";
+import userManager from "../data/fs/UsersManager.fs.js";
 
 export default async (socket) => {
   console.log("client id: " + socket.id);
