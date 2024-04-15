@@ -24,18 +24,18 @@ const socketServer = new Server(nodeServer);
 socketServer.on("connection", socketCb);
 
 //handlebars
-server.engine("hanlenbars", engine());
+server.engine("handlebars", engine());
 server.set("view engine", "handlebars");
 server.set("views", __dirname + "/src/views");
 
 server.use(
   "/css/bootstrap",
-  express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
+  express.static(path.join(__dirname, "/public"))
 );
 
 server.use(
   "/js/bootstrap",
-  express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+  express.static(path.join(__dirname, "/public"))
 );
 
 //middlewares
@@ -45,20 +45,20 @@ server.use(morgan("dev"));
 server.use(express.static(__dirname + "public"));
 
 //router
-server.get("/", async (requerimientos, respuesta) => {
-  try {
-    return respuesta.status(200).json({
-      response: "Coder Api",
-      success: true,
-    });
-  } catch (error) {
-    console.log(error);
-    return respuesta.status(500).json({
-      response: "Coder Api Error",
-      success: false,
-    });
-  }
-});
+// server.get("/", async (requerimientos, respuesta) => {
+//   try {
+//     return respuesta.status(200).json({
+//       response: "Coder Api",
+//       success: true,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     return respuesta.status(500).json({
+//       response: "Coder Api Error",
+//       success: false,
+//     });
+//   }
+// });
 
 //image & form
  server.post("/multer.mid", multer.single("photo"), (req, res) => {

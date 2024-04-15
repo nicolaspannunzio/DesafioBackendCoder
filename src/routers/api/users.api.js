@@ -1,13 +1,13 @@
 import { Router } from "express";
-import UserManager from "../../data/fs/UsersManager.fs.js"
+import userManager from "../../data/fs/UsersManager.fs.js";
 import usersProps from "../../middlewares/usersProps.mid.js";
 
-const router = Router();
-const userManager = UserManager ;
+const usersRouter = Router();
+//const userManager = new UserManager();
 
-router.get("/", async (req, res, next) => {
+usersRouter.get("/", async (req, res, next) => {
   try {
-    let users;
+    let users = await userManager.read();
     if (userManager.read) {
       users = await userManager.read(req.query.role);
     } else {
@@ -31,9 +31,9 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+usersRouter.get("/:uid", async (req, res, next) => {
   try {
-    const user = await userManager.readOne(req.params.id);
+    const user = await userManager.readOne(req.params.uid);
     if (user != null) {
       res.status(200).json({ statusCode: 200, response: user });
     } else {
@@ -48,7 +48,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/", usersProps, async (req, res, next) => {
+usersRouter.post("/", usersProps, async (req, res, next) => {
   try {
     const data = req.body;
     const newUser = await userManager.create(data);
@@ -63,12 +63,12 @@ router.post("/", usersProps, async (req, res, next) => {
   }
 });
 
-router.put("/:id", usersProps, async (req, res, next) => {
+usersRouter.put("/:uid", usersProps, async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { uid } = req.params;
     const data = req.body;
 
-    const updatedUser = await userManager.update(id, data);
+    const updatedUser = await userManager.update(uid, data);
 
     res.status(200).json({
       statusCode: 200,
@@ -79,10 +79,10 @@ router.put("/:id", usersProps, async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+usersRouter.delete("/:uid", async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const deletedUser = await userManager.destroy(id);
+    const { uid } = req.params;
+    const deletedUser = await userManager.destroy(uid);
 
     if (deletedUser) {
       res.status(200).json({
@@ -97,7 +97,5 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-const usersRouter = Router();
-usersRouter.use("/users", router);
-
+//usersRouter.use("/users", usersRouter);
 export default usersRouter;
