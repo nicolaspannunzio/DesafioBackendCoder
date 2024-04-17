@@ -1,5 +1,6 @@
 # DesafioBackendCoder
-# Sprint1
+
+# Sprint 1
 
 Gestor de Usuarios y Productos
 Este repositorio contiene un gestor de usuarios y productos desarrollado en JavaScript. Las clases UserManager y ProductsManager permiten crear y gestionar usuarios y productos respectivamente.
@@ -9,7 +10,7 @@ index.js: Archivo principal que instancia y utiliza las clases UserManager y Pro
 UserManager.js: Clase para gestionar usuarios.
 ProductsManager.js: Clase para gestionar productos.
 
-# Sprint2
+# Sprint 2
 Este proyecto utiliza los módulos fs y crypto de Node.js para la gestión de usuarios. Las funciones principales son:
 
 init()
@@ -107,6 +108,44 @@ response: (el objeto)
 El manejo de errores se realiza con errorHandler.
 
 Con estos endpoints, se logra una API RESTful que permite la gestión completa de productos y usuarios, cumpliendo con los requerimientos establecidos y garantizando la integridad de los datos y la experiencia del usuario.
+
+# Sprint 4
+
+Descripción
+Esta aplicación es un sistema de comercio electrónico que permite la gestión de productos y usuarios, utilizando sockets para actualizar la información en tiempo real.
+
+Configuración de Sockets
+Configuración inicial
+Para configurar los sockets, sigue estos pasos:
+
+En la carpeta views, crea la carpeta layouts si no existe.
+Dentro de layouts, crea el archivo products.handlebars.
+Conexión de sockets
+Asegúrate de configurar los puntos de conexión en el back y el front:
+
+En el socket del servidor (back), utiliza socketServer.on() para configurar la conexión.
+En el cliente, ejecuta io() para generar el socket.
+
+Emisión y Recepción de eventos (datos)
+Emisión "products": En el socket del servidor, utiliza el manager de productos de FS para enviar un objeto con todos los productos al socket del cliente.
+
+Recepción "products": En el socket del cliente de la vista /real de Handlebars, renderiza dinámicamente los productos recibidos en tiempo real.
+
+Emisión "new product": En el socket del cliente de la vista /real, captura los datos del formulario y emite el producto para guardarlo en el archivo JSON del backend.
+
+Recepción "new product": En el socket del servidor, guarda el producto en el archivo y emite todos los productos para actualizar la vista /real en tiempo real.
+
+Vistas
+localhost:8080/
+Página de inicio del comercio.
+Incluye como mínimo el logo del comercio y todos los productos que se venden (solo HBS).
+localhost:8080/products/real
+Página con formulario de creación de producto y listado de productos.
+Los productos se actualizan en tiempo real utilizando sockets (HBS + Socket).
+localhost:8080/users/:uid
+Página con los datos del usuario (solo HBS).
+localhost:8080/users/register
+Página con formulario para registrar un usuario (solo HBS, no es funcional).
 
 Contacto
 Para preguntas o problemas relacionados con el desarrollo, puedes contactarme a través de nicolas.a.pannunzio@email.com o lautyhoff77@gmail.com
