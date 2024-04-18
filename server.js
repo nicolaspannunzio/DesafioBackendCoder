@@ -42,7 +42,7 @@ server.use(
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 server.use(morgan("dev"));
-server.use(express.static(__dirname + "public"));
+server.use(express.static(__dirname + "/public"));
 
 //router
 // server.get("/", async (requerimientos, respuesta) => {

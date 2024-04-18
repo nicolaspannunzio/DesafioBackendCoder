@@ -1,38 +1,28 @@
-<h1>USERS CODER</h1>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam officiis
-  ipsam ab provident minima, vero dolorem et harum excepturi praesentium autem
-  quaerat exercitationem alias adipisci! Sunt mollitia possimus cumque illum!
-  Optio debitis aliquam nisi sunt officiis corrupti! Rerum officia cupiditate
-  dolores voluptatibus rem voluptates tenetur enim at itaque, iusto labore
-  consectetur ipsum aliquam quibusdam ducimus possimus amet illum nostrum cum.
-  Dolorum repudiandae pariatur eum corporis ea! Eligendi praesentium repellat
-  repudiandae, minus modi nesciunt iure quos reprehenderit deserunt est
-  accusantium placeat ipsa eum dolorem mollitia commodi quo fugit consequatur
-  qui ex? Eaque facere est quaerat aperiam officia possimus earum cum eum
-  voluptas impedit quae nesciunt, consectetur ab, expedita non optio nemo neque
-  itaque, omnis iure. Fugiat aliquid assumenda eius inventore blanditiis. Eius
-  iste ducimus nulla quod magnam repudiandae earum corrupti natus delectus
-  blanditiis esse possimus optio recusandae, veniam quos maxime temporibus ad
-  incidunt vel ex ea aliquid totam. Similique, unde aliquam. Quis sapiente fuga
-  dolorum enim eveniet, in, quos maiores sit fugit mollitia error suscipit
-  provident accusantium ut dicta velit veniam qui debitis. Cumque, officia?
-  Numquam commodi eveniet repudiandae aperiam architecto? Iusto magnam
-  assumenda, iure nostrum mollitia dicta delectus animi. Ipsam magni harum enim,
-  fuga nulla sed voluptatem. Numquam cumque vel iure similique unde, quia quam
-  reprehenderit. Quis beatae eum accusantium? Dolorum nesciunt nihil maxime
-  deleniti quos sequi eos obcaecati vero nulla ad quas cumque fuga, animi
-  aperiam tempora vel exercitationem amet recusandae architecto. Fuga
-  exercitationem ullam possimus fugiat architecto unde? Adipisci maxime
-  molestiae cupiditate, quibusdam obcaecati explicabo voluptatem animi numquam
-  blanditiis iste quaerat dicta iure quae hic quasi vero eius aperiam alias ab
-  expedita autem illo consectetur aut? Voluptates, perferendis! Ad numquam eius
-  doloribus, aspernatur dolor velit aut nihil illo, eum consequuntur iusto
-  suscipit aliquam hic sed quidem voluptate blanditiis modi voluptatibus quae
-  fugit. Ipsum, est! Id aliquid temporibus voluptates?</p>
-
+<div class="container">
+  <h1 class="text-center">¡Welcome to the technology store!</h1>
+  <p class="text-center">Discover the wide variety of products we have to offer.</p>
+  <h3>Published products</h3>
+  <div class="row">
+    {{#each products}}
+      <div class="col-md-3 mb-4">
+        <div class="card">
+          <img
+            src="/products/{{this.photo}}"
+            class="card-img-top"
+            alt="{{this.title}}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">Precio: ${{this.price}}</p>
+            <a href="#" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
 <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
 <script>
-  console.log("script");
-  const socket = io(); 
-  //socket.on("users", data => console.log(data))
+  console.log("script"); const socket = io(); //socket.on("users", data =>
+  console.log(data))
 </script>
