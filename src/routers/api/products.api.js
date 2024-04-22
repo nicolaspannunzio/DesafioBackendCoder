@@ -1,22 +1,11 @@
 import { Router } from "express";
 import productsManager from "../../data/fs/ProductsManager.fs.js";
+import isText from "../../middlewares/isText.mid.js";
 
 const productsRouter = Router();
 
- productsRouter.get("/real", async (req, res, next) => {
-     try {
-     const realProducts = await productsManager.getRealProducts(); 
-  
-      res.status(200).json({
-        response: realProducts,
-        success: true,
-       });
-     } catch (error) {
-       next(error);
-     }
-   });
 
-productsRouter.post("/:", create);
+productsRouter.post("/:", isText, create);
 productsRouter.get("/", read);
 productsRouter.get("/:id", readOne);
 productsRouter.put("/:id", update);

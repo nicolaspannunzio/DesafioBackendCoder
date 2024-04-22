@@ -78,12 +78,14 @@ class ProductsManager {
         await fs.promises.writeFile(this.path, all);
         return one;
       } else {
-        const error = new Error("Not Found");
+        const error = new Error("Not found!");
         error.statusCode = 404;
         throw error;
       }
     } catch (error) {
+      //el throw de la linea 72 hace saltar este catch
       throw error;
+      //el throw de la linea 76 hace saltar el catch de la ruta
     }
   }
 

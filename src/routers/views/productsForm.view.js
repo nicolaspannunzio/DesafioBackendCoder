@@ -1,9 +1,9 @@
 import { Router } from "express";
 import productsManager from "../../data/fs/ProductsManager.fs.js";
 
-const productsRouter = Router();
+const productsFormRouter = Router();
 
-productsRouter.get("/", async (req, res, next) => {
+productsFormRouter.get("/", async (req, res, next) => {
     try {
       const products = await productsManager.read();
       return res.render("products", { title: "Products", products });
@@ -12,7 +12,7 @@ productsRouter.get("/", async (req, res, next) => {
     }
   });
 
-productsRouter.get("/:id", async (req, res, next) => {
+productsFormRouter.get("/:id", async (req, res, next) => {
     try {
       const { id } = req.params;
       const one = await productsManager.readOne(id);
@@ -24,4 +24,4 @@ productsRouter.get("/:id", async (req, res, next) => {
   
 
 
-export default productsRouter;
+export default productsFormRouter;

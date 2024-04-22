@@ -1,9 +1,8 @@
 [
-
   {
     "id": "8a511ffa4e43b1627cbf4a3e",
     "photo": "dest.png",
-    "title": "destornillador",
+    "title": "destornillador cross",
     "category": "herramientas",
     "price": 1600,
     "stock": 9999
@@ -240,5 +239,4 @@
     "price": 3000,
     "stock": 9999
   }
-
 ]
