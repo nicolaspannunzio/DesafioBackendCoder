@@ -46,20 +46,20 @@ server.use(express.static(__dirname+"/public"))
 
 
 //router
-// server.get("/", async (requerimientos, respuesta) => {
-//   try {
-//     return respuesta.status(200).json({
-//       response: "Coder Api",
-//       success: true,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return respuesta.status(500).json({
-//       response: "Coder Api Error",
-//       success: false,
-//     });
-//   }
-// });
+server.get("/home", async (requerimientos, respuesta) => {
+   try {
+    return respuesta.status(200).json({
+      response: "Coder Api",
+       success: true,
+     });
+   } catch (error) {
+     console.log(error);
+     return respuesta.status(500).json({
+       response: "Coder Api Error",
+       success: false,
+     });
+   }
+ });
 
 //image & form
  server.post("/multer.mid", multer.single("photo"), (req, res) => {

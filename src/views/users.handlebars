@@ -1,0 +1,109 @@
+<main class="d-flex w-100 flex-grow-1">
+  <section class="d-flex flex-column align-items-center w-100">
+    <h1 class="bg-success-subtle p-2 text-center text-success w-100">REGISTER
+      FORM</h1>
+    <form class="d-flex flex-column w-25 m-3">
+      <input
+        class="m-2 p-2 text-center"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="EMAIL"
+      />
+      <input
+        class="m-2 p-2 text-center"
+        type="password"
+        name="password"
+        id="password"
+        placeholder="PASSWORD"
+      />
+      <input
+        class="m-2 p-2 text-center"
+        type="text"
+        name="photo"
+        id="photo"
+        placeholder="PHOTO"
+      />
+      <input
+        class="m-2 p-2 text-center btn btn-success"
+        type="button"
+        id="register"
+        value="REGISTER!"
+      />
+    </form>
+  </section>
+</main>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+  const socket = io();
+
+// Escuchar el evento "users" enviado por el servidor al cargar la página
+socket.on("users", (users) => {
+  renderUsers(users);
+});
+
+// Función para renderizar los usuarios
+function renderUsers(users) {
+  const userContainer = document.getElementById("realTimeUsers");
+  userContainer.innerHTML = ""; // Limpiar los usuarios anteriores
+
+  // Invertir el orden de los usuarios
+  const reversedUsers = users.reverse();
+
+  // Iterar sobre los usuarios y crear elementos para mostrarlos en la página
+  reversedUsers.forEach((user) => {
+    const userHtml = `
+      <div class="col-md-3 mb-4">
+        <div class="card">
+          <img src="/users/${user.photo}" class="card-img-top" alt="${user.username}">
+          <div class="card-body">
+            <h5 class="card-title">${user.username}</h5>
+            <p class="card-text">Correo: ${user.email}</p>
+            <a href="#" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+    `;
+    userContainer.innerHTML += userHtml;
+  });
+}
+
+// Manejar el envío del formulario para agregar un nuevo usuario
+const userForm = document.getElementById("userForm");
+userForm.addEventListener("submit", async (event) => {
+  event.preventDefault(); // Evitar la recarga de la página al enviar el formulario
+
+  const formData = new FormData(userForm);
+
+  const newUser = {
+    username: formData.get("username"),
+    email: formData.get("email"),
+    photo: formData.get("photo"),
+  };
+
+  try {
+    // Enviar la información del nuevo usuario al servidor
+    const response = await fetch("/register", {
+      method: "POST",
+      body: JSON.stringify(newUser),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      // Restablecer el formulario
+      userForm.reset();
+
+      // Enviar el evento "newUser" al servidor con los datos del nuevo usuario
+      socket.emit("newUser", newUser);
+    } else {
+      console.error("Error al registrar el usuario:", response.status);
+    }
+  } catch (error) {
+    console.error("Error al registrar el usuario:", error);
+  }
+});
+
+</script>
