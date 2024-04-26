@@ -22,6 +22,7 @@ nodeServer.listen(port, ready);
 //server TCP
 const socketServer = new Server(nodeServer);
 socketServer.on("connection", socketCb);
+export { socketServer };
 
 //handlebars
 server.engine("handlebars", engine());
