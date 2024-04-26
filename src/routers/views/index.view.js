@@ -7,10 +7,18 @@ const viewsRouter = Router();
 
 viewsRouter.use("/products", productsRouter);
 viewsRouter.use("/users", usersRouter);
-viewsRouter.use("/productsForm", productsFormRouter)
+viewsRouter.use("/productsForm", productsFormRouter);
 viewsRouter.get("/", async (req, res, next) => {
   try {
     return res.render("index", { title: "HOME" });
+  } catch (error) {
+    return next(error);
+  }
+});
+
+viewsRouter.get("/chat", async (req, res, next) => {
+  try {
+    return res.render("chat", { title: "CHAT" });
   } catch (error) {
     return next(error);
   }
