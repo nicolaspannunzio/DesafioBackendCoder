@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Productos en Tiempo Real</h2>
 
-  <div class="row" id="realTimeProducts">
+  <div class="row row-cols-4 item-center" id="realTimeProducts">
     <!-- Aquí se renderizarán los productos en tiempo real -->
   </div>
 </div>
@@ -14,34 +14,27 @@
 
   // Escuchar el evento "products" enviado por el servidor al cargar la página
   socket.on("products", (data) => {
-    renderProducts("");
-  });
+ // Función para renderizar los productos
+  let template = ``
 
-  // Función para renderizar los productos
-  function renderProducts(data) {
-    const template = document.getElementById("realTimeProducts");
-    template.innerHTML = products; // Limpiar los productos anteriores
 
   // Invertir el orden de los productos
  
 
     // Iterar sobre los productos y crear elementos para mostrarlos en la página
-
-    let template = ``
-
-    template = data.map(each=>
-      const productHtml = `
-        <div class="col-md-3 mb-4">
-          <div class="card">
-            <img src="/products/${each.photo}" class="card-img-top" alt="${each.title}">
-            <div class="card-body">
+    template = data.map(each=>`
+        <div class="card" style="max-width:25vw" >
+            <img src="${each.photo}" class="card-img-top"  style="max-height:30vh" alt="${each.title}">
+            <div class="card-body"> 
               <h5 class="card-title">${each.title}</h5>
               <p class="card-text">Precio: $${each.price}</p>
               <a href="#" class="btn btn-primary">Ver más</a>
             </div>
           </div>
-        </div>
-      `;
+      `
 
-    )}
+    ).join("")
+      document.querySelector("#realTimeProducts").innerHTML = template
+  });
+
 </script>

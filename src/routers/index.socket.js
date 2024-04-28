@@ -1,4 +1,5 @@
 import usersManager from "../data/fs/UsersManager.fs.js";
+import productsManager from "../data/fs/ProductsManager.fs.js";
 
 export default async (socket) => {
   console.log("client id: " + socket.id);
@@ -9,4 +10,6 @@ export default async (socket) => {
     await usersManager.create(data);
     socket.emit("users", await usersManager.read());
   });
+
+  socket.emit("products", await productsManager.read())
 };
