@@ -1,9 +1,9 @@
 import { Router } from "express";
-import userManager from "../../data/fs/UsersManager.fs.js";
+//import userManager from "../../data/fs/UsersManager.fs.js";
+import userManager from "../../data/mongo/Manager.mongo.js";
 import usersProps from "../../middlewares/usersProps.mid.js";
 
 const usersRouter = Router();
-//const userManager = new UserManager();
 
 usersRouter.get("/", async (req, res, next) => {
   try {
@@ -97,5 +97,4 @@ usersRouter.delete("/:uid", async (req, res, next) => {
   }
 });
 
-//usersRouter.use("/users", usersRouter);
 export default usersRouter;
