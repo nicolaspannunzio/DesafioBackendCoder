@@ -6,7 +6,9 @@ import cartsRouter from "./api/carts.router.api.js";
 const router = Router();
 
 router.use("/users", apiRouter);
-router.use("/products", viewsRouter);
 router.use("/cart", cartsRouter);
+
+router.use("/api", apiRouter);
+router.use("/", viewsRouter);
 
 export default router;
