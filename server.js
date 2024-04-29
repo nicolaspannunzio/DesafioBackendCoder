@@ -1,4 +1,5 @@
 import "dotenv/config.js";
+import "dotenv/config.js";
 import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
@@ -38,13 +39,16 @@ server.set("view engine", "handlebars");
 server.set("views", __dirname + "/src/views");
 
 server.use("/css/bootstrap", express.static(path.join(__dirname, "/public")));
+server.use("/css/bootstrap", express.static(path.join(__dirname, "/public")));
 
+server.use("/js/bootstrap", express.static(path.join(__dirname, "/public")));
 server.use("/js/bootstrap", express.static(path.join(__dirname, "/public")));
 
 //middlewares
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 server.use(morgan("dev"));
+server.use(express.static(__dirname + "/public"));
 server.use(express.static(__dirname + "/public"));
 
 //router
@@ -64,6 +68,9 @@ server.get("/home", async (requerimientos, respuesta) => {
 });
 
 //image & form
+server.post("/multer.mid", multer.single("photo"), (req, res) => {
+  res.send(req.file.filename);
+});
 server.post("/multer.mid", multer.single("photo"), (req, res) => {
   res.send(req.file.filename);
 });
