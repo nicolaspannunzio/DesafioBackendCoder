@@ -1,18 +1,16 @@
-import { model, Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const collection = "products";
-
-const schema = new Schema({
-  title: { type: String, required: true },
-  photo: { type: String, default: "default_picture.png" },
-  category: { type: String, required: true },
-  description: {
-    type: String,
-    default: "El usuario no incluyó una descripcion",
+const schema = new Schema(
+  {
+    title: { type: String, required: true },
+    category: { type: String, required: true },
+    price: { type: Number, required: true },
   },
-  price: { type: Number, required: true },
-  stock: { type: Number, default: 1 },
-},{ timestamps: true});
+  {
+    timestamps: true,
+  }
+);
 
 const Product = model(collection, schema);
-export default Product;
+export default Product
