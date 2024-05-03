@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, response } from "express";
 //import userManager from "../../data/fs/UsersManager.fs.js";
 import userManager from "../../data/mongo/Manager.mongo.js";
 import usersProps from "../../middlewares/usersProps.mid.js";
@@ -43,6 +43,33 @@ usersRouter.get("/:uid", async (req, res, next) => {
         message: "User not found",
       });
     }
+  } catch (error) {
+    return next(error);
+  }
+});
+
+usersRouter.get("/paginate", async function paginate(req, res, next) {
+  try {
+    const filter = {};
+    const opts = {};
+    if (req.query.limit){
+      opts.limit = req.query.limit;
+    }
+    if (req.query.page) {
+      opts.page = req.query.page;
+    }
+    const all = await userManager.paginate({ filter, opts });
+    return res.json({
+      statusCode: 200,
+      response: all.docs,
+      infoPaginate: {
+        page: all.page,
+        totalPages: all.totalPages,
+        limit: all.limit,
+        prevPage: all.prevPage,
+        nextPage: all.nextPage,
+      },
+    });
   } catch (error) {
     return next(error);
   }

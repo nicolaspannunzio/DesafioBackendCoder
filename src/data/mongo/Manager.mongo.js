@@ -12,9 +12,16 @@ class Manager {
   }
   async read(filter) {
     try {
-      const all = await this.Model.find(filter);
+      const all = await this.Model.find(filter); //.populate("user_id");
       return all;
-
+    } catch (error) {
+      throw error;
+    }
+  }
+  async paginate({filter, opts}) {
+    try {
+      const all = await this.Model.paginate(filter, opts); 
+      return all;
     } catch (error) {
       throw error;
     }
@@ -45,8 +52,16 @@ class Manager {
   }
   async destroy(id) {
     try {
-      const one = await this.Model.findByIdAndDelete(id);
+      const one = await this.Model.findByIdAndDelete(id); //.lean();
       return one;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async aggregate(ojt) {
+    try {
+      const result = await this.Model.aggregate(obj);
+      return result;
     } catch (error) {
       throw error;
     }
