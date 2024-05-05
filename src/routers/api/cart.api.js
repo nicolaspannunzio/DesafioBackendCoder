@@ -16,10 +16,11 @@ cartsRouter.post("/", async (req, res, next) => {
     return next(error);
   }
 });
+
 cartsRouter.get("/", async (req, res, next) => {
   try {
     const { user_id } = req.query;
-    if (user_id) {
+    if ( user_id ) {
       const all = await cartsManager.read({ user_id });
       if (all.length > 0) {
         return res.json({
