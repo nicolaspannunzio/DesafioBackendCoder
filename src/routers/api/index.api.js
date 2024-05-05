@@ -1,7 +1,7 @@
 import { Router } from "express";
 import usersRouter from "./users.api.js";
 import productsRouter from "./products.api.js";
-import cartsRouter from "./carts.router.api.js";
+import cartsRouter from "./cart.api.js";
 import ticketsRouter from "./tickets.api.js";
 
 const apiRouter = Router();
