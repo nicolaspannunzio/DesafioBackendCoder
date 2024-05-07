@@ -17,7 +17,7 @@
       const socket = io();
 
       // Escuchar el evento "products" enviado por el servidor al cargar la página
-      socket.on("products", (data) => {
+      socket.on("carts", (data) => {
     // Función para renderizar los productos
       let template = ``
 

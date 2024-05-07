@@ -1,27 +1,52 @@
-<main class="d-flex w-100 flex-grow-1">
-  <section class="d-flex flex-column align-items-center w-100">
-    <h1 class="bg-success-subtle p-2 text-center text-success w-100">LOGIN FORM</h1>
-    <form class="d-flex flex-column w-25 m-3">
-      <input
-        class="m-2 p-2 text-center"
-        type="email"
-        name="email"
-        id="email"
-        placeholder="EMAIL"
-      />
-      <input
-        class="m-2 p-2 text-center"
-        type="password"
-        name="password"
-        id="password"
-        placeholder="PASSWORD"
-      />
-      <input
-        class="m-2 p-2 text-center btn btn-success"
-        type="button"
-        id="login"
-        value="LOGIN!"
-      />
-    </form>
-  </section>
-</main>
+<section class="container-fluid d-flex bg-light justify-content-evenly w-100">
+  
+
+    {{! Users }}
+    <article id="realUsers" class="">
+      <div class="spinner-grow" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </article>
+  
+
+  <div class="br-2 d-flex ">
+
+
+    <article class="border-start p-3">
+        <div class="d-flex flex-row-reverse">
+  <div class="p-2"><h3 class="d-flex gap-2">Sign In  <i class="fa-solid d-flex aligtn-items-center justify-content-end fa-user mb-5"></i> </h3></div>
+
+</div>
+      
+      <form class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="name" id="email" class="form-control" />
+
+        <label for="photo" class="form-label">Photo</label>
+        <input type="name" id="photoUser" class="form-control" />
+
+        <label for="password" class="form-label">Password</label>
+        <input type="name" id="password" class="form-control" />
+
+        <label for="role" class="form-label">Role</label>
+        <input type="name" id="role" class="mb-3 form-control" />
+
+        <button
+          class="btn btn-primary"
+          id="formUser"
+          onclick="runUser()"
+          type="button"
+        ><i class="fa-solid fa-plus"></i>
+        </button>
+      </form>
+    </article>
+  </div>
+
+</section>
+<script
+  src="https://kit.fontawesome.com/02894371fc.js"
+  crossorigin="anonymous"
+></script>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+ <script src="/scripts/realU.js"></script> 

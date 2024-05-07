@@ -1,4 +1,15 @@
 import { Router } from "express";
-import productManager from "../../data/mongo/managers/ProductsManager.mongo.js";
+import cartsManager from "../../data/mongo/managers/CartsManager.mongo.js";
 
-const cartRouter = Router()
+const cartsRouter = Router()
+
+cartsRouter.get("/", async (req, res, next) => {
+    try {
+        const carts = await cartsManager.read()
+        return res.render("carts", { carts })
+    } catch (error) {
+        next(error)
+    }
+})
+
+export default cartsRouter
