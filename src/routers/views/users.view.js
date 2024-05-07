@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import usersManager from "../../data/fs/UsersManager.fs.js";
 
 const usersRouter = Router();
@@ -33,5 +34,6 @@ usersRouter.get("/:uid", async (req, res, next) => {
     return next(error);
   }
 });
+
 
 export default usersRouter;

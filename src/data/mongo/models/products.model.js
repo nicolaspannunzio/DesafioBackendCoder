@@ -4,7 +4,9 @@ const collection = "products";
 const schema = new Schema(
   {
     title: { type: String, required: true },
+
     category: { type: String, required: true, index: true },
+
     price: { type: Number, required: true },
   },
   {

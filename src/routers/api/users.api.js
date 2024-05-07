@@ -1,3 +1,4 @@
+
 import { Router } from "express";
 import UsersManager from "../../data/mongo/managers/UsersManager.mongo.js"
 import isPhoto from '../../middlewares/isPhoto.js';
@@ -37,10 +38,12 @@ async function read(req, res, next) {
       const error = new Error("Not found!");
       error.statusCode = 404;
       throw error;
+
     }
   } catch (error) {
     return next(error);
   }
+
 }
 
 async function readOne(req, res, next) {
@@ -56,24 +59,35 @@ async function readOne(req, res, next) {
       const error = new Error("Not found!");
       error.statusCode = 404;
       throw error;
+
     }
   } catch (error) {
     return next(error);
   }
-}
+});
+
 
 async function update(req, res, next) {
   try {
     const { uid } = req.params;
     const data = req.body;
     const one = await UsersManager.update(uid, data);
+
     return res.json({
       statusCode: 200,
-      response: one,
+      response: all.docs,
+      infoPaginate: {
+        page: all.page,
+        totalPages: all.totalPages,
+        limit: all.limit,
+        prevPage: all.prevPage,
+        nextPage: all.nextPage,
+      },
     });
   } catch (error) {
     return next(error);
   }
+
 }
 
 async function destroy(req, res, next) {
@@ -81,12 +95,14 @@ async function destroy(req, res, next) {
     const { uid } = req.params;
     const one = await UsersManager.destroy(uid);
     return res.json({
+
       statusCode: 200,
-      response: one,
+      response: updatedUser,
     });
   } catch (error) {
     return next(error);
   }
-}
+});
 
 export default usersRouter;
+
