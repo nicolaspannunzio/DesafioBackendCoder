@@ -1,0 +1,48 @@
+<main>
+    <h2>Cart</h2>
+    <section>
+            <div>
+      <div class="container" style="padding-right: 1rem;">
+      <h2 class="text-center mb-3">Productos en Tiempo Real</h2>
+
+      <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-8 item-center"   id="realTimeProducts">
+        <!-- Aquí se renderizarán los productos en tiempo real -->
+      </div>
+    </div>
+
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+    <script>
+      const socket = io();
+
+      // Escuchar el evento "products" enviado por el servidor al cargar la página
+      socket.on("carts", (data) => {
+    // Función para renderizar los productos
+      let template = ``
+
+
+      // Invertir el orden de los productos
+
+
+        // Iterar sobre los productos y crear elementos para mostrarlos en la página
+        template = data.map(each=>`
+            <div class="card" style="max-width:40vw" >
+                <img src="${each.photo}" class="card-img-top"  style="max-height:30vh" alt="${each.title}">
+                <div class="card-body"> 
+                  <h5 class="card-title">${each.title}</h5>
+                  <p class="card-text">Precio: $${each.price}</p>
+                  <a id="cart-button" href="#" class="btn btn-primary">Agregar Al Carrito</a>
+                </div>
+              </div>
+          `
+
+        ).join("")
+          document.querySelector("#realTimeProducts").innerHTML = template
+      });
+
+    </script>
+    </section>
+</main>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
