@@ -4,4 +4,5 @@ function pathHandler(req, res, next) {
     message: `${req.method} ${req.url} not found path`,
   });
 }
+
 export default pathHandler;

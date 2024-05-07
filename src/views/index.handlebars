@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="text-center">¡Welcome to the technology store!</h1>
+  <p class="text-center">Discover the wide variety of products we have to offer.</p>
+  <h3>Published products</h3>
+  <div class="row">
+    {{#each products}}
+      <div class="col-md-3 mb-4">
+        <div class="card">
+          <img
+            src="/products/{{this.photo}}"
+            class="card-img-top"
+            alt="{{this.title}}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">Precio: ${{this.price}}</p>
+            <a href="#" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script>
+  console.log("script"); const socket = io(); //socket.on("users", data =>
+  console.log(data)
+</script>

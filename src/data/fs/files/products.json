@@ -1,83 +1,82 @@
 [
-
   {
     "id": "8a511ffa4e43b1627cbf4a3e",
-    "photo": "dest.png",
-    "title": "destornillador",
+    "photo": "https://static.nb.com.ar/i/nb_parlante-genius-sp-s110-black_ver_3806403cb097cba23515fd3b39dca06a.jpeg",
+    "title": "destornillador cross",
     "category": "herramientas",
     "price": 1600,
     "stock": 9999
   },
   {
     "id": "e9a83fd107c37782d21a54c8",
-    "photo": "latex-prof.png",
-    "title": "latex prof 10lt",
-    "category": "pinturas",
-    "price": 55000,
+    "photo": "https://specifications-pro.com/wp-content/uploads/2023/04/Samsung-Galaxy-S24-Ultra-2.jpg",
+    "title": "samsung s24 ultra",
+    "category": "celulares",
+    "price": 10000000,
     "stock": 9999
   },
   {
     "id": "0d73d59b1ed61228bf772434",
-    "photo": "sint-rojo-1.png",
-    "title": "sintetico rojo 1lt",
-    "category": "pinturas",
-    "price": 11200,
+    "photo": "https://phonetechx.com/wp-content/uploads/2022/09/iPhone-16-Pro-Max.jpg",
+    "title": "iphone 16 pro max",
+    "category": "celulares",
+    "price": 11900000,
     "stock": 9999
   },
   {
     "id": "8356f8c71a8dcc96c32d7c86",
-    "photo": "sierra.png",
-    "title": "Sierra Circular",
-    "category": "maquinas",
-    "price": 89000,
+    "photo": "https://th.bing.com/th/id/OIP.Qz48FIMixLJ78puIkW-DBQHaFj?rs=1&pid=ImgDetMain",
+    "title": "notebook asus GL703VM",
+    "category": "notebook",
+    "price": 1254000,
     "stock": 9999
   },
   {
     "id": "b5f794890eec22a75d5821b1",
-    "photo": "Amol115.png",
-    "title": "Amoladora 115",
-    "category": "maquinas",
-    "price": 45000,
+    "photo": "https://www.notebookcheck-cn.com/uploads/tx_nbc2/4zu3_Lenovo_Ideapad_Gaming_3_15IMH05.jpg",
+    "title": "notebook lenovo ideapad",
+    "category": "notebook",
+    "price": 53450021,
     "stock": 9999
   },
   {
     "id": "3e891c0a5e9b111e15f65823",
-    "photo": "Amol180.png",
-    "title": "Amoladora 180",
-    "category": "maquinas",
-    "price": 190000,
+    "photo": "https://th.bing.com/th/id/R.7e9abea7e471a4db34856893ac76a805?rik=GOLOC1pTXfnl%2fw&riu=http%3a%2f%2frodo.com.ar%2fmedia%2fcatalog%2fproduct%2fcache%2f1%2fimage%2f9df78eab33525d08d6e5fb8d27136e95%2f3%2f4%2f345659-1.jpg&ehk=Ok6%2fl5nqMLVK6iNheX%2bXCKA6fRKCwc4R3UxA4XWcS1Q%3d&risl=&pid=ImgRaw&r=0",
+    "title": "lavarropas drean 8kg 1400rpm",
+    "category": "lavarropas",
+    "price": 698000,
     "stock": 9999
   },
   {
     "id": "14912b343020dc7279b414ff",
-    "photo": "Espat4.png",
-    "title": "Espatula 4'",
-    "category": "herramientas",
-    "price": 3400,
+    "photo": "https://th.bing.com/th/id/OIP.6F_J5KDYJqPWiUuWIygz_wHaE8?rs=1&pid=ImgDetMain",
+    "title": "smartv samsung 55' curvo 4k",
+    "category": "televisores",
+    "price": 890700,
     "stock": 9999
   },
   {
     "id": "1d1093365ee8a773b88a827b",
-    "photo": "cloropol.png",
-    "title": "Cloro en polvo 1kg",
-    "category": "piletas",
+    "photo": "https://th.bing.com/th/id/R.91f822609639e738ac7bc92fb25bbbd7?rik=I8izFBz9t7W6Hw&pid=ImgRaw&r=0",
+    "title": "smartv phillips 55' 4k",
+    "category": "televisores",
     "price": 9500,
     "stock": 9999
   },
   {
     "id": "e65a98b33162dbf9374f5e6c",
-    "photo": "Cloroliq.png",
-    "title": "Cloro liquido 10lt",
+    "photo": "https://noblex.com.ar/media/wysiwyg/dk50x6550_frente.jpg",
+    "title": "smartv noblex 50' 4k",
     "category": "piletas",
-    "price": 6000,
+    "price": 549000,
     "stock": 9999
   },
   {
     "id": "c434510cb0e07686a5759ffe",
-    "photo": "sacah.png",
-    "title": "Sacahojas piletas",
-    "category": "Piletas",
-    "price": 3000,
+    "photo": "https://th.bing.com/th/id/OIP.0rZHu4dw9UbQFe3yVA0zHgHaHa?rs=1&pid=ImgDetMain",
+    "title": "cocina electrolux doble horno",
+    "category": "cocinas",
+    "price": 899000,
     "stock": 9999
   },
   {
@@ -240,5 +239,4 @@
     "price": 3000,
     "stock": 9999
   }
-
 ]

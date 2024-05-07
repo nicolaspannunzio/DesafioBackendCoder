@@ -1,5 +1,5 @@
-import fs from "fs"
-import crypto from "crypto"
+import fs from "fs";
+import crypto from "crypto";
 
 class ProductsManager {
   constructor() {
@@ -17,48 +17,36 @@ class ProductsManager {
     }
   }
 
-
   async create(data) {
     try {
       const product = {
         id: crypto.randomBytes(12).toString("hex"),
         photo: data.photo || url(""),
         title: data.title,
-        category: data.category,
+        category: data.category, // || "to do",
         price: data.price,
         stock: data.stock,
       };
-      if (!data.title || !data.category || !data.price || !data.stock) {
-        throw new Error(
-          "product error. Try again."
-        );
-      } else {
-        let products = await fs.promises.readFile(this.path, "utf-8");
-        products = JSON.parse(products);
-        products.push(product);
-        console.log("product created");
-        products = JSON.stringify(products, null, 3);
-        await fs.promises.writeFile(this.path, products);
-      }
+      let products = await fs.promises.readFile(this.path, "utf-8");
+      products = JSON.parse(products);
+      products.push(product);
+      //console.log("product created");
+      products = JSON.stringify(products, null, 3);
+      await fs.promises.writeFile(this.path, products);
+      return products;
     } catch (error) {
       console.log("create product error");
     }
   }
 
-
-
-
-  async read(){
-      try {
-        let products = await fs.promises.readFile(this.path, "utf-8");
-        products = JSON.parse(products);
-        return products
-
-
-      } catch (error) {
-        console.log("product error");
-      }
-
+  async read() {
+    try {
+      let products = await fs.promises.readFile(this.path, "utf-8");
+      products = JSON.parse(products);
+      return products;
+    } catch (error) {
+      console.log("product error");
+    }
   }
 
   async readOne(id) {
@@ -66,9 +54,9 @@ class ProductsManager {
       let products = await fs.promises.readFile(this.path, "utf-8");
       products = JSON.parse(products);
       const product = products.find((each) => each.id === id);
-      if ( product ) {
+      if (product) {
         console.log("product not found");
-        return product
+        return product;
       } else {
         return null;
       }
@@ -79,24 +67,25 @@ class ProductsManager {
   }
 
   async update(id, data) {
-    try{
-
-      let all = await this.read()
-      let one = all.find((each) => each.id === id)
+    try {
+      let all = await this.read();
+      let one = all.find((each) => each.id === id);
       if (one) {
-        for (let prop in data){
-          one[prop] = data[prop]
+        for (let prop in data) {
+          one[prop] = data[prop];
         }
-        all = JSON.stringify(all, null, 2)
-        await fs.promises.writeFile(this.path, all)
+        all = JSON.stringify(all, null, 2);
+        await fs.promises.writeFile(this.path, all);
         return one;
       } else {
-        const error = new Error("Not Found")
-        error.statusCode= 404
-        throw error
+        const error = new Error("Not found!");
+        error.statusCode = 404;
+        throw error;
       }
-      } catch (error){
-      throw error
+    } catch (error) {
+      //el throw de la linea 72 hace saltar este catch
+      throw error;
+      //el throw de la linea 76 hace saltar el catch de la ruta
     }
   }
 
@@ -259,5 +248,5 @@ async function test() {
   console.log(await gestorDeProductos.readOne("e83d858a4ad0f53e582f4d37"));
 }
 
-const productsManager = new ProductsManager()
-export default productsManager
+const productsManager = new ProductsManager();
+export default productsManager;
