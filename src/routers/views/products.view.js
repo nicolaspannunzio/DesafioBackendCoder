@@ -12,15 +12,23 @@ productsRouter.get("/", async (req, res, next) => {
     }
   });
 
-productsRouter.get("/:id", async (req, res, next) => {
-    try {
-      const { id } = req.params;
-      const one = await productsManager.readOne(id);
-      return res.render("details", { title: "DETAILS", products: one });
-    } catch (error) {
-      return next(error);
-    }
-  });
+productsRouter.get("/productsForm", async (req, res, next) => {
+  try {
+    const products = await productsManager.read();
+    return res.render("productsForm", { title: "PRODUCTSFORM"})
+  } catch (error) {
+    return next(error)
+  }
+})
+
+productsRouter.get("/productDetail", async (req, res, next) => {
+  try {
+    const products = await productsManager.read();
+    return res.render("productDetails", { title: "DETAILS"})
+  } catch (error) {
+    return next(error)
+  }
+})
   
 
 
