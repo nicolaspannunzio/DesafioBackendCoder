@@ -10,9 +10,9 @@ class Manager {
       throw error;
     }
   }
-  async read(filter) {
+  async read(cat) {
     try {
-      const all = await this.Model.find(filter); //.populate("user_id");
+      const all = await this.Model.find(cat).lean(); 
       return all;
     } catch (error) {
       throw error;
@@ -54,14 +54,6 @@ class Manager {
     try {
       const one = await this.Model.findByIdAndDelete(id); //.lean();
       return one;
-    } catch (error) {
-      throw error;
-    }
-  }
-  async aggregate(ojt) {
-    try {
-      const result = await this.Model.aggregate(obj);
-      return result;
     } catch (error) {
       throw error;
     }

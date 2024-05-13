@@ -36,5 +36,5 @@ schema.pre("findOneAndDelete", function () {
 
 schema.plugin(mongoosePaginate);
 
-const Cart = model(collection, schema);
-export default Cart;
+const Carts = model(collection, schema);
+export default Carts;

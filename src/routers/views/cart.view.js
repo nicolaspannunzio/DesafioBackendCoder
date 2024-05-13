@@ -3,7 +3,7 @@ import cartsManager from "../../data/mongo/managers/CartsManager.mongo.js";
 
 const cartsRouter = Router()
 
-cartsRouter.get("/", async (req, res, next) => {
+cartsRouter.get("/carts", async (req, res, next) => {
     try {
         const carts = await cartsManager.read()
         return res.render("carts", { carts })
