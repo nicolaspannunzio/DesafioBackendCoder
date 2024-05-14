@@ -1,5 +1,4 @@
 import { Router } from "express";
-//import productsManager from "../../data/fs/ProductsManager.fs.js";
 import productsManager from "../../data/mongo/managers/ProductsManager.mongo.js";
 
 const productsRouter = Router();
@@ -29,8 +28,8 @@ async function create(req, res) {
 
 async function read(req, res) {
   try {
-    const { category } = req.query;
-    const all = await productsManager.read(category);
+    const { cat } = req.query;
+    const all = await productsManager.read(cat);
     if (all) {
       return res.status(200).json({
         response: all,
