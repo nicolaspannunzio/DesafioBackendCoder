@@ -1,11 +1,14 @@
 import { Router } from "express";
-import productsManager from "../../data/mongo/managers/ProductsManager.mongo.js";
+import productsManager from "../../data/mongo/ProductsManager.mongo.js";
+import isText from "../../middlewares/isText.mid.js";
+import isValidAdmin from "../../middlewares/isValidAdmin.mid.js";
 
 const productsRouter = Router();
 
-productsRouter.post("/:", create);
 productsRouter.get("/", read);
+productsRouter.get("/paginate", paginate);
 productsRouter.get("/:id", readOne);
+productsRouter.post("/", isValidAdmin, isText, create);
 productsRouter.put("/:id", update);
 productsRouter.delete("/:id", destroy);
 
@@ -46,6 +49,37 @@ async function read(req, res) {
       response: error.message,
       success: false,
     });
+  }
+}
+
+async function paginate(req, res, next) {
+  try {
+    const filter = {};
+    const opts = { page: 1, limit: 9, lean: true, sort: { title: 1 } };
+    if (req.query.limit) {
+      opts.limit = req.query.limit;
+    }
+    if (req.query.page) {
+      opts.page = req.query.page;
+    }
+    if (req.query.title) {
+      filter.title = new RegExp(req.query.title, "i");
+    }
+    const all = await productsManager.paginate({ filter, opts });
+    return res.json({
+      statusCode: 200,
+      response: all.docs,
+      info: {
+        totalDocs: all.totalDocs,
+        page: all.page,
+        totalPages: all.totalPages,
+        limit: all.limit,
+        prevPage: all.prevPage,
+        nextPage: all.nextPage,
+      },
+    });
+  } catch (error) {
+    return next(error);
   }
 }
 
