@@ -12,7 +12,7 @@ apiRouter.use("/users", usersRouter);
 apiRouter.use("/products", productsRouter);
 apiRouter.use("/carts", cartsRouter);
 apiRouter.use("/tickets", ticketsRouter);
-apiRouter.use("/cookies", cookiesRouter)
-apiRouter.use("/cookies", sessionsRouter)
+apiRouter.use("/cookies", cookiesRouter);
+apiRouter.use("/sessions", sessionsRouter);
 
 export default apiRouter;
