@@ -15,6 +15,8 @@ import multer from "./src/middlewares/multer.mid.js";
 import dbConnect from "./src/utils/dbConnect.util.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
+//import fileStore from "session-file-store";
+import MongoStore from "connect-mongo";
 
 //console.log("todas las variables de entorno: " + process.env);
 //console.log(process.env.MONGO_URI);
@@ -53,12 +55,20 @@ server.use(morgan("dev"));
 server.use(express.static(__dirname + "/public"));
 server.use(express.static(__dirname + "/public"));
 server.use(cookieParser(process.env.SECRET_COOKIE));
-server.use(session({
-  secret: process.env.SECRET_SESSION,
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge: 60 * 60 * 1000}
-}));
+//const FileStore = fileStore(session);
+server.use(
+  session({
+    /* store: new FileStore({
+      path: "./src/data/fs/files/sessions",
+      ttl: 60 * 60,
+    }), */
+    store: new MongoStore({ mongoUrl: process.env.MONGO_URI, ttl: 60 * 60 }),
+    secret: process.env.SECRET_SESSION,
+    resave: true,
+    saveUninitialized: true,
+    //cookie: { maxAge: 60 * 60 * 1000}
+  })
+);
 
 //router
 server.get("/home", async (requerimientos, respuesta) => {
