@@ -1,5 +1,5 @@
 import usersManager from "../data/mongo/managers/UsersManager.mongo.js";
-import productManager from "../data/mongo/managers/ProductsManager.mongo.js";
+import productsManager from "../data/mongo/managers/ProductsManager.mongo.js";
 import cartsManager from "../data/mongo/managers/CartsManager.mongo.js";
 
 export default async (socket) => {
@@ -12,7 +12,7 @@ export default async (socket) => {
     socket.emit("users", await usersManager.read());
   });
 
-  socket.emit("products", await productManager.read())
+  socket.emit("products", await productsManager.read())
 
   socket.emit("carts", await cartsManager.read())
 };

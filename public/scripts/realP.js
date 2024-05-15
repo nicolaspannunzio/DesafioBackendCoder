@@ -2,7 +2,7 @@ const socket = io();
 const addCart = document.getElementById("addCart")
 
 
-socket.on("Product", (data) => {
+socket.on("products", (data) => {
 // Función para renderizar los productos
 let template = ``
   // Iterar sobre los productos y crear elementos para mostrarlos en la página

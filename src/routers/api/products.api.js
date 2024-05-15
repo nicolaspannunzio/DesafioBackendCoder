@@ -26,26 +26,25 @@ async function create(req, res) {
   }
 }
 
-async function read(req, res) {
+async function read(req, res, next) {
   try {
     const { cat } = req.query;
-    const all = await productsManager.read(cat);
-    if (all) {
-      return res.status(200).json({
-        response: all,
-        category,
-        success: true,
-      });
+    let all;
+    if (cat) {
+      all = await productsManager.read({ cat });
     } else {
-      const error = new Error("Not Found");
-      error.statusCode = 404;
-      throw error;
+      all = await productsManager.read();
     }
-  } catch (error) {
-    return res.status(error.statusCode).json({
-      response: error.message,
-      success: false,
+    res.status(200).json({
+      statusCode: 200,
+      response: all,
     });
+    const error = new Error("Not Found");
+    error.statusCode = 404;
+    throw error;
+    
+  } catch (error) {
+    return next(error);
   }
 }
 

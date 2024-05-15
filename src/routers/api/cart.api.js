@@ -4,10 +4,10 @@ import cartsManager from "../../data/mongo/managers/CartsManager.mongo.js";
 const cartsRouter = Router();
 
 cartsRouter.get("/", read);
-cartsRouter.get("/:nid", readOne);
+cartsRouter.get("/:id", readOne);
 cartsRouter.post("/", create);
-cartsRouter.put("/:nid", update);
-cartsRouter.delete("/:nid", destroy);
+cartsRouter.put("/:id", update);
+cartsRouter.delete("/:id", destroy);
 
 async function create(req, res, next) {
   try {
