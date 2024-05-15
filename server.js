@@ -18,6 +18,7 @@ import session from "express-session";
 //import fileStore from "session-file-store";
 import MongoStore from "connect-mongo";
 
+
 //console.log("todas las variables de entorno: " + process.env);
 //console.log(process.env.MONGO_URI);
 

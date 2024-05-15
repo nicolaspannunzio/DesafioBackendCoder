@@ -1,7 +1,7 @@
 import { Router } from "express";
 import usersManager from "../../data/mongo/managers/UsersManager.mongo.js";
 import isValidData from "../../middlewares/isValidData.mid.js";
-import isValidEmail from "../../middlewares/isValidEmail.min.js";
+import isValidEmail from "../../middlewares/isValidEmail.mid.js";
 import isValidUser from "../../middlewares/isValidUser.mid.js";
 import isValidPassword from "../../middlewares/isValidPasword.mid.js";
 

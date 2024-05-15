@@ -1,4 +1,4 @@
-import usersManager from "../data/mongo/UsersManager.mongo.js";
+import usersManager from "../data/mongo/managers/UsersManager.mongo.js";
 
 async function isValidData(req, res, next) {
   try {
