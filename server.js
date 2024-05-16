@@ -55,21 +55,21 @@ server.use(express.json());
 server.use(morgan("dev"));
 server.use(express.static(__dirname + "/public"));
 server.use(express.static(__dirname + "/public"));
-server.use(cookieParser(process.env.SECRET_COOKIE));
+// server.use(cookieParser(process.env.SECRET_COOKIE));
 //const FileStore = fileStore(session);
-server.use(
-  session({
-    /* store: new FileStore({
-      path: "./src/data/fs/files/sessions",
-      ttl: 60 * 60,
-    }), */
-    store: new MongoStore({ mongoUrl: process.env.MONGO_URI, ttl: 60 * 60 }),
-    secret: process.env.SECRET_SESSION,
-    resave: true,
-    saveUninitialized: true,
-    //cookie: { maxAge: 60 * 60 * 1000}
-  })
-);
+// server.use(
+//   session({
+//     /* store: new FileStore({
+//       path: "./src/data/fs/files/sessions",
+//       ttl: 60 * 60,
+//     }), */
+//     store: new MongoStore({ mongoUrl: process.env.MONGO_URI, ttl: 60 * 60 }),
+//     secret: process.env.SECRET_SESSION,
+//     resave: true,
+//     saveUninitialized: true,
+//     //cookie: { maxAge: 60 * 60 * 1000}
+//   })
+//);
 
 //router
 server.get("/home", async (requerimientos, respuesta) => {

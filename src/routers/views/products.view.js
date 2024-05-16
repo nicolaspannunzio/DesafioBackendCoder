@@ -1,11 +1,11 @@
 import { Router } from "express";
-import productManager from "../../data/mongo/managers/ProductsManager.mongo.js";
+import productsManager from "../../data/mongo/managers/ProductsManager.mongo.js";
 
 const productsRouter = Router();
 
 productsRouter.get("/", async (req, res, next) => {
     try {
-      const products = await productManager.read();
+      const products = await productsManager.read();
       return res.render("products", { title: "Products", products });
     } catch (error) {
       return next(error);
@@ -14,7 +14,7 @@ productsRouter.get("/", async (req, res, next) => {
 
 productsRouter.get("/productsForm", async (req, res, next) => {
   try {
-    const products = await productManager.read();
+    const products = await productsManager.read();
     return res.render("productsForm", { title: "PRODUCTSFORM"})
   } catch (error) {
     return next(error)
@@ -23,7 +23,7 @@ productsRouter.get("/productsForm", async (req, res, next) => {
 
 productsRouter.get("/productDetail/:id", async (req, res, next) => {
   try {
-    const products = await productManager.read();
+    const products = await productsManager.read();
     return res.render("productDetails", { title: "DETAILS"})
   } catch (error) {
     return next(error)
