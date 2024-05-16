@@ -5,7 +5,7 @@ import isValidAdmin from "../../middlewares/isValidAdmin.mid.js";
 
 const productsRouter = Router();
 
-productsRouter.get("/", read);
+
 productsRouter.get("/paginate", paginate);
 productsRouter.get("/:id", readOne);
 productsRouter.post("/", isValidAdmin, isText, create);
@@ -28,28 +28,61 @@ async function create(req, res) {
     });
   }
 }
+// 
 
-async function read(req, res, next) {
+
+// async function read(req, res, next) {
+//   try {
+//     const { cat } = req.query;
+//     let all;
+//     if (cat) {
+//       all = await productsManager.read({ cat });
+//     } else {
+//       all = await productsManager.read();
+//     }
+//     res.status(200).json({
+//       statusCode: 200,
+//       response: all,
+//     });
+//     const error = new Error("Not Found");
+//     error.statusCode = 404;
+//     throw error;
+    
+//   } catch (error) {
+//     return next(error);
+//   }
+// }
+
+productsRouter.get("/", async (req, res, next) => {
   try {
-    const { cat } = req.query;
-    let all;
-    if (cat) {
-      all = await productsManager.read({ cat });
-    } else {
-      all = await productsManager.read();
+    const category = req.query.category;
+    const products = await productsManager.read();
+    const filteredProducts = category
+      ? products.filter((product) => product.category === category)
+      : products;
+    const totalProducts = filteredProducts.length;
+
+    if (filteredProducts.length === 0) {
+      return res.status(404).json({
+        statusCode: 404,
+        response: null,
+        message: "No Products for Display",
+      });
     }
+
     res.status(200).json({
       statusCode: 200,
-      response: all,
+      totalProducts: totalProducts,
+      response: filteredProducts,
     });
-    const error = new Error("Not Found");
-    error.statusCode = 404;
-    throw error;
-    
   } catch (error) {
     return next(error);
   }
-}
+});
+
+
+
+
 
 async function paginate(req, res, next) {
   try {
